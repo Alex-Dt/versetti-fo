@@ -49,6 +49,11 @@ const theme = createTheme({
       fontWeight: 700,
     },
   },
+  breakpoints: {
+    values: {
+      lg: 1240, // Set lg to 1240px
+    },
+  },
   components: {
     MuiButton: {
       styleOverrides: {
