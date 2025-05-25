@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 
 import "./index.css";
+import "./assets/fonts/fonts.css";
 import { CssBaseline } from "@mui/material";
 
 createRoot(document.getElementById("root")).render(
