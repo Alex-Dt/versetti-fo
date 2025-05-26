@@ -10,7 +10,7 @@ import img5 from "../../assets/images/exited/sys.png";
 import img6 from "../../assets/images/exited/ambrosus.png";
 import img7 from "../../assets/images/exited/privateailabs.png";
 import img8 from "../../assets/images/exited/numerai.png";
-import img9 from "../../assets/images/exited/bat.svg";
+import img9 from "../../assets/images/exited/bat2.svg";
 import img10 from "../../assets/images/exited/bit.png";
 
 const data = [
@@ -60,8 +60,9 @@ const data = [
   },
   {
     icon: img9,
+    isCustom: true,
     title: "bat",
-    height: 73,
+    height: 53,
   },
   {
     icon: img4,
@@ -113,10 +114,12 @@ export const Exited = () => {
                   >
                     <img
                       style={{
-                        width: "100%",
+                        width: _data?.isCustom ? "auto" : "100%",
                         height: _data.height,
                         objectFit: "contain",
-                        mixBlendMode: "lighten",
+                        ...(_data?.isCustom
+                          ? { mixBlendMode: "luminosity" }
+                          : { mixBlendMode: "none" }),
                       }}
                       src={_data.icon}
                       alt={_data.title}

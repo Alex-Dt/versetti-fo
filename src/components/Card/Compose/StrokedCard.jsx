@@ -10,6 +10,9 @@ export const StrokedCard = ({ icon, title }) => {
           flex: 1,
           borderRadius: "30px",
           background: "transparent",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <Stack
