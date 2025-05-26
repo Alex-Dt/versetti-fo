@@ -1,4 +1,4 @@
-import { Box, Link, Stack } from "@mui/material";
+import { Box, Link, Stack, useMediaQuery } from "@mui/material";
 import { Container } from "../Container";
 import { Logo } from "../../assets/images/logo";
 import { Navigation } from "./Navigation";
@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const isDesktop = useMediaQuery("(min-width:600px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +36,8 @@ export const Header = () => {
       <Container>
         <Stack
           sx={{
-            pt: isScrolled ? "20px" : "57px",
-            pb: isScrolled ? "20px" : "0px",
+            pt: isScrolled ? "20px" : isDesktop ? "57px" : "20px",
+            pb: isScrolled ? "20px" : isDesktop ? "0px" : "20px",
             transition: "all 0.3s ease-out",
           }}
           direction={"row"}

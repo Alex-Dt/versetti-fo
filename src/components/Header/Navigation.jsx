@@ -56,6 +56,7 @@ export const Navigation = ({ isOpen, setIsOpen }) => {
                 }}
                 onClick={toggleDrawer}
                 size={"large"}
+                color="inherit"
               >
                 {isOpen ? (
                   <CloseIcon fontSize={"large"} />
