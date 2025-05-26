@@ -10,7 +10,15 @@ export const ContactForm = () => {
       }}
     >
       <Stack gap={2}>
-        <Stack direction={"row"} gap={2}>
+        <Stack
+          sx={{
+            flexDirection: {
+              xs: "column",
+              sm: "row",
+            },
+          }}
+          gap={2}
+        >
           <TextField
             id="email"
             label="Email"

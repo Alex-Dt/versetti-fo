@@ -24,13 +24,29 @@ const theme = createTheme({
     h1: {
       fontFamily: "News706 BT",
       fontWeight: 700,
-      fontSize: "86px",
+      // fontSize: {
+      //   xs: "37px",
+      //   sm: "86px",
+      // },
+      [`@media (max-width:600px)`]: {
+        fontSize: "37px",
+      },
+      [`@media (min-width:600px)`]: {
+        fontSize: "86px",
+      },
       lineHeight: 1,
     },
     h2: {
       fontFamily: "News706 BT",
       fontWeight: 700,
       fontSize: "55px",
+      [`@media (max-width:600px)`]: {
+        fontSize: "26px",
+        textAlign: "center",
+      },
+      [`@media (min-width:600px)`]: {
+        fontSize: "55px",
+      },
       lineHeight: 1.9,
     },
     h3: {
@@ -51,7 +67,15 @@ const theme = createTheme({
   },
   breakpoints: {
     values: {
+      xs: 0,
+
+      sm: 600,
+
+      md: 900,
+
       lg: 1277,
+
+      xl: 1536,
     },
   },
   components: {

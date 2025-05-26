@@ -21,7 +21,23 @@ export const Footer = () => {
   return (
     <Box component={"footer"} id="contact" bgcolor={"#171521"}>
       <Container>
-        <Stack gap={2} pt={"151px"} direction={"row"} pb={"151px"}>
+        <Stack
+          sx={{
+            flexDirection: {
+              xs: "column",
+              sm: "row",
+            },
+            pt: {
+              xs: "56px",
+              sm: "151px",
+            },
+            pb: {
+              xs: "56px",
+              sm: "151px",
+            },
+          }}
+          gap={2}
+        >
           <Stack flex={1}>
             <Stack
               sx={{
@@ -30,7 +46,24 @@ export const Footer = () => {
               }}
             >
               <Typography variant={"h2"}>Get in touch</Typography>
-              <Stack direction={"row"} mb={3} gap={1}>
+              <Stack
+                sx={{
+                  mt: {
+                    xs: 1,
+                    sm: 0,
+                  },
+                  mb: {
+                    xs: 2,
+                    sm: 3,
+                  },
+                  justifyContent: {
+                    xs: "center",
+                    sm: "flex-start",
+                  },
+                }}
+                direction={"row"}
+                gap={1}
+              >
                 {socials.map((social) => {
                   return (
                     <Button
@@ -52,7 +85,17 @@ export const Footer = () => {
                   );
                 })}
               </Stack>
-              <Typography color={"#837BBE"} sx={{ fontSize: 16 }} mt={"auto"}>
+              <Typography
+                sx={{
+                  display: {
+                    xs: "none",
+                    sm: "flex",
+                  },
+                  fontSize: 16,
+                }}
+                color={"#837BBE"}
+                mt={"auto"}
+              >
                 Versetti Family Office via its affiliate companies shall not be
                 responsible or liable for any content of this website or any
                 communications sent from any e-mail address of this domain.
@@ -62,6 +105,25 @@ export const Footer = () => {
           </Stack>
           <Stack flex={1}>
             <ContactForm />
+          </Stack>
+          <Stack>
+            <Typography
+              sx={{
+                display: {
+                  xs: "flex",
+                  sm: "none",
+                },
+                fontSize: 13,
+                textAlign: "center",
+              }}
+              color={"#837BBE"}
+              mt={4}
+            >
+              Versetti Family Office via its affiliate companies shall not be
+              responsible or liable for any content of this website or any
+              communications sent from any e-mail address of this domain.
+              VERSETTI.CO All rights reserved.
+            </Typography>
           </Stack>
         </Stack>
       </Container>

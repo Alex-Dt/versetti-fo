@@ -28,11 +28,37 @@ export const WhatWeDo = () => {
   return (
     <Box component={"section"} id="mission">
       <Container>
-        <Stack mb={"87px"}>
-          <Typography mb={"61px"} variant={"h2"}>
+        <Stack
+          sx={{
+            mb: {
+              xs: "73px",
+              sm: "87px",
+            },
+          }}
+        >
+          <Typography
+            sx={{
+              mb: {
+                xs: "20px",
+                sm: "61px",
+              },
+            }}
+            variant={"h2"}
+          >
             What we do
           </Typography>
-          <Stack direction={"row"} gap={"8%"}>
+          <Stack
+            sx={{
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+              gap: {
+                xs: 10,
+                sm: "8%",
+              },
+            }}
+          >
             {data.map((_data) => {
               return <Card data={_data} />;
             })}

@@ -24,11 +24,26 @@ export const Verticals = () => {
   return (
     <Box component={"section"} id="activities">
       <Container>
-        <Stack mb={"125px"}>
+        <Stack
+          sx={{
+            mb: {
+              xs: "55px",
+              sm: "125px",
+            },
+          }}
+        >
           <Typography mb={"35px"} variant={"h2"}>
             Verticals
           </Typography>
-          <Stack direction={"row"} gap={2}>
+          <Stack
+            sx={{
+              flexDirection: {
+                xs: "column",
+                sm: "row",
+              },
+            }}
+            gap={2}
+          >
             {data.map((_data) => {
               return <Card type={3} data={_data} />;
             })}

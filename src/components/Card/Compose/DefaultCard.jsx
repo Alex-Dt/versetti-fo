@@ -24,7 +24,16 @@ export const DefaultCard = ({ title, text, icon }) => {
           <Typography variant={"h3"} textAlign={"center"}>
             {title}
           </Typography>
-          <Typography>{text}</Typography>
+          <Typography
+            sx={{
+              textAlign: {
+                xs: "center",
+                sm: "left",
+              },
+            }}
+          >
+            {text}
+          </Typography>
         </Stack>
       </Card>
     </>

@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "../../components/Container";
 import Grid from "@mui/material/Grid";
 
@@ -67,10 +67,18 @@ const data = [
 ];
 
 export const Exited = () => {
+  const isDesktop = useMediaQuery("(min-width:600px)");
   return (
     <Box component={"section"} id="exited">
       <Container>
-        <Stack mb={"128px"}>
+        <Stack
+          sx={{
+            mb: {
+              xs: "54px",
+              sm: "128px",
+            },
+          }}
+        >
           <Typography variant={"h2"} mb={"8px"}>
             Exited
           </Typography>
@@ -79,12 +87,23 @@ export const Exited = () => {
               {data.map((_data) => {
                 return (
                   <Grid
-                    size={12 / 5}
+                    size={isDesktop ? 12 / 5 : 12 / 2}
                     p={2}
                     sx={{
                       display: "flex",
                       alignItems: "center",
-                      minHeight: 140,
+                      minHeight: {
+                        xs: 56,
+                        sm: 140,
+                      },
+                      pt: {
+                        xs: 0,
+                        sm: 2,
+                      },
+                      pb: {
+                        xs: 0,
+                        sm: 2,
+                      },
                     }}
                     border={"0.5px solid #3C3950"}
                   >

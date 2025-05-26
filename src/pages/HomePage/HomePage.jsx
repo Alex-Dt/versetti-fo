@@ -11,7 +11,23 @@ export const HomePage = () => {
     <>
       <Hero />
       <Container>
-        <Stack gap={3} pt="126px" pb={"86px"}>
+        <Stack
+          gap={3}
+          sx={{
+            textAlign: {
+              xs: "center",
+              sm: "left",
+            },
+            pt: {
+              xs: "0px",
+              sm: "126px",
+            },
+            pb: {
+              xs: "56px",
+              sm: "86px",
+            },
+          }}
+        >
           <Typography>
             Founded by the serial entrepreneur Angel Versetti, our Family Office
             seeks out the boldest deep tech ventures and nurtures them with

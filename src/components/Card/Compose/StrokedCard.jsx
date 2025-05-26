@@ -1,6 +1,7 @@
-import { Card, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography, useMediaQuery } from "@mui/material";
 
 export const StrokedCard = ({ icon, title }) => {
+  const isDesktop = useMediaQuery("(min-width:600px)");
   return (
     <>
       <Card
@@ -22,6 +23,7 @@ export const StrokedCard = ({ icon, title }) => {
               height: 63,
               minHeight: 63,
               objectFit: "contain",
+              ...(!isDesktop && { height: 40, minHeight: 40 }),
             }}
             src={icon}
             alt={title}
