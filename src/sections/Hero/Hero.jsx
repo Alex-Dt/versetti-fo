@@ -101,7 +101,7 @@ export const Hero = () => {
           }}
         >
           <Typography
-            maxWidth={690}
+            maxWidth={730}
             position={"relative"}
             zIndex={20}
             variant={"h1"}

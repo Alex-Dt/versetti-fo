@@ -96,6 +96,7 @@ export const Footer = () => {
                     sm: "flex",
                   },
                   fontSize: 16,
+                  opacity: 0.5,
                 }}
                 color={"#837BBE"}
                 mt={"auto"}
@@ -117,6 +118,7 @@ export const Footer = () => {
                   xs: "flex",
                   sm: "none",
                 },
+                opacity: 0.5,
                 fontSize: 13,
                 textAlign: "center",
               }}
