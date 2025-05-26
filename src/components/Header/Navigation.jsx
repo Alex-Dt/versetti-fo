@@ -1,25 +1,88 @@
-import { Box, Stack, Link } from "@mui/material";
+import {
+  Box,
+  Stack,
+  Link,
+  IconButton,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
 import { menu } from "../../constants/navigation";
 
-export const Navigation = () => {
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+
+export const Navigation = ({ isOpen, setIsOpen }) => {
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const isDesktop = useMediaQuery("(min-width:600px)");
+
+  //   const [activeSection, setActiveSection] = useState("");
+
+  //   useEffect(() => {
+  //     const handleScroll = () => {
+  //       let currentSection = "";
+
+  //       menu.forEach(({ title }) => {
+  //         const section = document.getElementById(title.toLowerCase());
+  //         if (section) {
+  //           const rect = section.getBoundingClientRect();
+  //           if (rect.top <= 200 && rect.bottom >= 100) {
+  //             currentSection = title.toLowerCase();
+  //           }
+  //         }
+  //       });
+
+  //       setActiveSection(currentSection);
+  //     };
+
+  //     window.addEventListener("scroll", handleScroll);
+  //     handleScroll();
+
+  //     return () => window.removeEventListener("scroll", handleScroll);
+  //   }, []);
   return (
     <Stack>
       <Box component="nav">
         <Stack direction="row">
-          {menu.map(({ title, href }) => {
-            return (
-              <Link
-                href={href}
+          {!isDesktop && (
+            <Stack>
+              <Button
                 sx={{
-                  p: 2,
+                  svg: {
+                    fontSize: 40,
+                  },
                 }}
-                underline="none"
-                color="inherit"
+                onClick={toggleDrawer}
+                size={"large"}
               >
-                {title}
-              </Link>
-            );
-          })}
+                {isOpen ? (
+                  <CloseIcon fontSize={"large"} />
+                ) : (
+                  <MenuIcon fontSize={"large"} />
+                )}
+              </Button>
+            </Stack>
+          )}
+          {isDesktop &&
+            menu.map(({ title, href }) => {
+              return (
+                <Link
+                  href={href}
+                  sx={{
+                    p: 2,
+                  }}
+                  color={
+                    "inherit"
+                    //   activeSection === title.toLowerCase() ? "red" : "inherit"
+                  }
+                  underline="none"
+                >
+                  {title}
+                </Link>
+              );
+            })}
         </Stack>
       </Box>
     </Stack>

@@ -22,7 +22,7 @@ const data = [
 
 export const Verticals = () => {
   return (
-    <Box component={"section"}>
+    <Box component={"section"} id="activities">
       <Container>
         <Stack mb={"125px"}>
           <Typography mb={"35px"} variant={"h2"}>

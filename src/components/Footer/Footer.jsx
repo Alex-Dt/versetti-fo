@@ -19,7 +19,7 @@ const socials = [
 
 export const Footer = () => {
   return (
-    <Box component={"footer"} bgcolor={"#171521"}>
+    <Box component={"footer"} id="contact" bgcolor={"#171521"}>
       <Container>
         <Stack gap={2} pt={"151px"} direction={"row"} pb={"151px"}>
           <Stack flex={1}>

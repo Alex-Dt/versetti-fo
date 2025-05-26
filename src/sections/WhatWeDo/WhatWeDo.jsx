@@ -26,7 +26,7 @@ const data = [
 
 export const WhatWeDo = () => {
   return (
-    <Box component={"section"}>
+    <Box component={"section"} id="mission">
       <Container>
         <Stack mb={"87px"}>
           <Typography mb={"61px"} variant={"h2"}>

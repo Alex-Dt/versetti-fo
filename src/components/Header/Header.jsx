@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Link, Stack } from "@mui/material";
 import { Container } from "../Container";
 import { Logo } from "../../assets/images/logo";
 import { Navigation } from "./Navigation";
@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,7 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <Box
       component="header"
@@ -40,8 +42,15 @@ export const Header = () => {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Logo />
-          <Navigation />
+          <Link
+            sx={{
+              display: "flex",
+            }}
+            href="/#"
+          >
+            <Logo />
+          </Link>
+          <Navigation {...{ isOpen, setIsOpen }} />
         </Stack>
       </Container>
     </Box>

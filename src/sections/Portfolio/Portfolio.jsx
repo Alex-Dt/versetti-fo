@@ -14,7 +14,7 @@ const data = [
 
 export const Portfolio = () => {
   return (
-    <Box component={"section"}>
+    <Box component={"section"} id="portfolio">
       <Container>
         <Stack mb={"51px"}>
           <Typography mb={"24px"} variant={"h2"}>

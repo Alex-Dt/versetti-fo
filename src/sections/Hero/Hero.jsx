@@ -7,6 +7,7 @@ export const Hero = () => {
   return (
     <Box
       component="section"
+      id="hero"
       sx={{
         position: "relative",
       }}
@@ -19,6 +20,7 @@ export const Hero = () => {
           zIndex: -1,
           left: -76,
           top: "50%",
+          maxHeight: "90vh",
           transform: "translateY(-50%) rotate(-7.29deg)",
         }}
       />
