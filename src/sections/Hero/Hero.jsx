@@ -74,11 +74,11 @@ export const Hero = () => {
         style={{
           position: "absolute",
           zIndex: -1,
-          left: -76,
+          left: 0,
           bottom: "5%",
           //   top: "100%",
           maxHeight: "90vh",
-          ...(!isDesktop && { maxHeight: "70vh" }),
+          ...(!isDesktop && { maxHeight: "70vh", left: -60 }),
           //   transform: "translateY(-50%) rotate(-7.29deg)",
         }}
       />

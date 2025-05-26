@@ -41,8 +41,8 @@ export const Header = () => {
       <Container>
         <Stack
           sx={{
-            pt: isScrolled ? "20px" : isDesktop ? "57px" : "20px",
-            pb: isScrolled ? "20px" : isDesktop ? "0px" : "20px",
+            pt: isScrolled ? "10px" : isDesktop ? "57px" : "10px",
+            pb: isScrolled ? "10px" : isDesktop ? "0px" : "10px",
             transition: "all 0.3s ease-out",
           }}
           direction={"row"}
@@ -52,6 +52,19 @@ export const Header = () => {
           <Link
             sx={{
               display: "flex",
+              svg: {
+                transition: "all 0.3s ease-out",
+                height: {
+                  xs: 40,
+                  sm: 51,
+                },
+              },
+              ...(isScrolled && {
+                svg: {
+                  height: 40,
+                  transition: "all 0.3s ease-out",
+                },
+              }),
             }}
             href="/#"
           >
