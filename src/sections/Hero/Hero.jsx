@@ -101,13 +101,18 @@ export const Hero = () => {
           }}
         >
           <Typography
-            maxWidth={800}
+            maxWidth={690}
             position={"relative"}
             zIndex={20}
             variant={"h1"}
+            sx={{
+              letterSpacing: "-4%",
+            }}
             textAlign={"center"}
           >
-            It’s not possible to reach the stars and live forever... Yet.
+            It’s not possible to reach the stars and live forever...
+            <br />
+            Yet.
           </Typography>
         </Stack>
       </Container>

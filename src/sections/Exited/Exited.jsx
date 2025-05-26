@@ -98,6 +98,7 @@ export const Exited = () => {
               {data.map((_data) => {
                 return (
                   <Grid
+                    key={_data.title}
                     size={isDesktop ? 12 / 5 : 12 / 2}
                     p={2}
                     sx={{

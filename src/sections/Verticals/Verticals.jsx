@@ -80,7 +80,7 @@ export const Verticals = () => {
             gap={2}
           >
             {data.map((_data) => {
-              return <Card type={3} data={_data} />;
+              return <Card key={_data.title} type={3} data={_data} />;
             })}
           </Stack>
         </Stack>

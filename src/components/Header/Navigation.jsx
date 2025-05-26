@@ -50,6 +50,7 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
             {menu.map(({ title, href }) => {
               return (
                 <Link
+                  key={title}
                   href={href}
                   onClick={() => setIsOpen(false)}
                   sx={{
@@ -103,6 +104,7 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
             menu.map(({ title, href }) => {
               return (
                 <Link
+                  key={`desktop_menu_${title}`}
                   href={href}
                   sx={{
                     p: 2,

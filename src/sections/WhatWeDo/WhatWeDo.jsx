@@ -110,7 +110,7 @@ export const WhatWeDo = () => {
             }}
           >
             {data.map((_data) => {
-              return <Card data={_data} />;
+              return <Card key={_data.title} data={_data} />;
             })}
           </Stack>
         </Stack>

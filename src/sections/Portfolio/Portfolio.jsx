@@ -54,8 +54,10 @@ export const Portfolio = () => {
             }}
             gap={2}
           >
-            {data.map((_data) => {
-              return <Card type={2} data={_data} />;
+            {data.map((_data, index) => {
+              return (
+                <Card key={`Portfolio_${index}_card`} type={2} data={_data} />
+              );
             })}
           </Stack>
         </Stack>

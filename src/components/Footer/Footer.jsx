@@ -7,12 +7,12 @@ import { LinkedInIcon } from "../../assets/socials/linkedInIcon";
 const socials = [
   {
     icon: <LinkedInIcon height={33} />,
-    title: "",
+    title: "LinkedIn",
     href: "",
   },
   {
     icon: <TwitterXIcon height={33} />,
-    title: "",
+    title: "TwitterX",
     href: "",
   },
 ];
@@ -67,6 +67,7 @@ export const Footer = () => {
                 {socials.map((social) => {
                   return (
                     <Button
+                      key={social.title}
                       variant={"contained"}
                       href={social.href}
                       target={"_blank"}
