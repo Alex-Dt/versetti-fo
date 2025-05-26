@@ -8,12 +8,12 @@ const socials = [
   {
     icon: <LinkedInIcon height={33} />,
     title: "LinkedIn",
-    href: "",
+    href: "https://www.linkedin.com/in/angelversetti/",
   },
   {
     icon: <TwitterXIcon height={33} />,
     title: "TwitterX",
-    href: "",
+    href: "https://x.com/angelversetti",
   },
 ];
 
