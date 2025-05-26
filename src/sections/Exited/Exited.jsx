@@ -20,39 +20,24 @@ const data = [
     title: "eth",
   },
   {
-    icon: img6,
-    title: "ambrosus",
-    height: 86,
-  },
-
-  {
-    icon: img3,
-    title: "doge",
-    height: 86,
-  },
-
-  {
-    icon: img10,
-    title: "bit",
-    height: 86,
-  },
-
-  {
     icon: img5,
     title: "sys",
     height: 86,
   },
   {
-    icon: img2,
-    title: "sss",
+    icon: img3,
+    title: "doge",
     height: 86,
   },
-
   {
-    icon: img9,
-    isCustom: true,
-    title: "bat",
-    height: 53,
+    icon: img10,
+    title: "bit",
+    height: 86,
+  },
+  {
+    icon: img6,
+    title: "ambrosus",
+    height: 86,
   },
   {
     icon: img8,
@@ -64,12 +49,17 @@ const data = [
     title: "privateailabs",
     height: 86,
   },
-  //   {
-  //     icon: img9,
-  //     isCustom: true,
-  //     title: "bat",
-  //     height: 53,
-  //   },
+  {
+    icon: img9,
+    isCustom: true,
+    title: "bat",
+    height: 53,
+  },
+  {
+    icon: img2,
+    title: "sss",
+    height: 86,
+  },
   {
     icon: img4,
     title: "secuchip",
