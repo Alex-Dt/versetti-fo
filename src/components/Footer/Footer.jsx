@@ -41,7 +41,10 @@ export const Footer = () => {
           <Stack flex={1}>
             <Stack
               sx={{
-                maxWidth: " 428px",
+                maxWidth: {
+                  sm: "428px",
+                  xs: "100%",
+                },
                 flex: 1,
               }}
             >
