@@ -108,6 +108,8 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
                   href={href}
                   sx={{
                     p: 2,
+                    fontSize: "16px",
+                    textTransform: "uppercase",
                   }}
                   color={
                     "inherit"
