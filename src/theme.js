@@ -16,7 +16,7 @@ const theme = createTheme({
       color: "#FFFFFF",
     },
     fontFamily: ["Circe Rounded", "sans-serif"].join(","),
-    fontSize: "22px",
+    fontSize: 19,
     body1: {
       fontWeight: 400,
       lineHeight: 1.9,
