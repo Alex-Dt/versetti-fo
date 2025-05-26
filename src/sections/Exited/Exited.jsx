@@ -4,12 +4,12 @@ import Grid from "@mui/material/Grid";
 
 import img1 from "../../assets/images/exited/eth.svg";
 import img2 from "../../assets/images/exited/sss.png";
-import img3 from "../../assets/images/exited/doge.png";
+import img3 from "../../assets/images/exited/doge.svg";
 import img4 from "../../assets/images/exited/secuchip.png";
-import img5 from "../../assets/images/exited/sys.png";
-import img6 from "../../assets/images/exited/ambrosus.png";
+import img5 from "../../assets/images/exited/sys.svg";
+import img6 from "../../assets/images/exited/ambrosus.svg";
 import img7 from "../../assets/images/exited/privateailabs.png";
-import img8 from "../../assets/images/exited/numerai.png";
+import img8 from "../../assets/images/exited/numerai.svg";
 import img9 from "../../assets/images/exited/bat3.svg";
 import img10 from "../../assets/images/exited/bit.png";
 
@@ -57,7 +57,7 @@ const data = [
   {
     icon: img8,
     title: "numerai",
-    height: 86,
+    height: 47,
   },
   {
     icon: img7,
