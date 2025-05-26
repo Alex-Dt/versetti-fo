@@ -10,7 +10,7 @@ import img5 from "../../assets/images/exited/sys.png";
 import img6 from "../../assets/images/exited/ambrosus.png";
 import img7 from "../../assets/images/exited/privateailabs.png";
 import img8 from "../../assets/images/exited/numerai.png";
-import img9 from "../../assets/images/exited/bat2.svg";
+import img9 from "../../assets/images/exited/bat3.svg";
 import img10 from "../../assets/images/exited/bit.png";
 
 const data = [
@@ -49,9 +49,10 @@ const data = [
   },
 
   {
-    icon: img7,
-    title: "privateailabs",
-    height: 86,
+    icon: img9,
+    isCustom: true,
+    title: "bat",
+    height: 53,
   },
   {
     icon: img8,
@@ -59,11 +60,16 @@ const data = [
     height: 86,
   },
   {
-    icon: img9,
-    isCustom: true,
-    title: "bat",
-    height: 53,
+    icon: img7,
+    title: "privateailabs",
+    height: 86,
   },
+  //   {
+  //     icon: img9,
+  //     isCustom: true,
+  //     title: "bat",
+  //     height: 53,
+  //   },
   {
     icon: img4,
     title: "secuchip",
@@ -118,7 +124,7 @@ export const Exited = () => {
                         height: _data.height,
                         objectFit: "contain",
                         ...(_data?.isCustom
-                          ? { mixBlendMode: "luminosity" }
+                          ? { mixBlendMode: "none" }
                           : { mixBlendMode: "lighten" }),
                       }}
                       src={_data.icon}
