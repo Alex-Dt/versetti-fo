@@ -51,7 +51,7 @@ export const Navigation = ({ isOpen, setIsOpen }) => {
               <Button
                 sx={{
                   svg: {
-                    fontSize: 40,
+                    fontSize: 35,
                   },
                 }}
                 onClick={toggleDrawer}
