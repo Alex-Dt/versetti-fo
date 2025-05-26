@@ -27,7 +27,10 @@ export const ContactForm = () => {
         `https://script.google.com/macros/s/${CONFIG.VITE_GOOGLE_EXCEL_KEY}/exec`,
         {
           method: "POST",
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            message: formData.message.slice(0, 1000),
+          }),
         }
       );
 
@@ -119,6 +122,9 @@ export const ContactForm = () => {
           slotProps={{
             input: {
               disableUnderline: true,
+            },
+            htmlInput: {
+              maxLength: 1000,
             },
           }}
           sx={{
