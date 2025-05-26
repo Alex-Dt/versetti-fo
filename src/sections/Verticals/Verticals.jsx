@@ -3,7 +3,7 @@ import { Card } from "../../components/Card";
 
 import img1 from "../../assets/images/verticals/1.svg";
 import img2 from "../../assets/images/verticals/2.svg";
-import img3 from "../../assets/images/verticals/3.svg";
+import img3 from "../../assets/images/verticals/web3.svg";
 
 import flower_blur from "../../assets/images/flower-blur.png";
 import blur2 from "../../assets/images/blur2.png";
