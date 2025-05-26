@@ -59,6 +59,7 @@ export const Verticals = () => {
             alt="robot"
             style={{
               position: "absolute",
+              pointerEvents: "none",
               zIndex: -1,
               right: "20%",
               width: "30%",

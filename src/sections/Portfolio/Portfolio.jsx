@@ -34,6 +34,7 @@ export const Portfolio = () => {
             alt="robot"
             style={{
               position: "absolute",
+              pointerEvents: "none",
               left: "20%",
               width: "30%",
               maxWidth: "180px",

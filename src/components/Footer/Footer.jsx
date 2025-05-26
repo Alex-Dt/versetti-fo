@@ -82,6 +82,9 @@ export const Footer = () => {
                         width: "52px",
                         minWidth: "52px",
                         height: "48px",
+                        "&:hover": {
+                          background: "#3A3D578A",
+                        },
                       }}
                     >
                       {social.icon}

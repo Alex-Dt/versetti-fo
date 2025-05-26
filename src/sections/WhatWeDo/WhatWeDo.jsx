@@ -50,6 +50,8 @@ export const WhatWeDo = () => {
             alt="robot"
             style={{
               position: "absolute",
+              outline: "none",
+              pointerEvents: "none",
               zIndex: -1,
               right: "0%",
               width: "40%",
@@ -64,6 +66,8 @@ export const WhatWeDo = () => {
             alt="robot"
             style={{
               position: "absolute",
+              outline: "none",
+              pointerEvents: "none",
               zIndex: -1,
               left: "15%",
               width: "30%",
@@ -78,6 +82,8 @@ export const WhatWeDo = () => {
             alt="robot"
             style={{
               position: "absolute",
+              outline: "none",
+              pointerEvents: "none",
               zIndex: -1,
               right: "8%",
               width: "30%",

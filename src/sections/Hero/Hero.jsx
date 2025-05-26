@@ -20,6 +20,7 @@ export const Hero = () => {
         alt="robot"
         style={{
           position: "absolute",
+          pointerEvents: "none",
           zIndex: -1,
           width: "100%",
           right: 0,
@@ -31,6 +32,7 @@ export const Hero = () => {
         alt="robot"
         style={{
           position: "absolute",
+          pointerEvents: "none",
           zIndex: -1,
           left: "62%",
           width: "20%",
@@ -45,6 +47,7 @@ export const Hero = () => {
         alt="robot"
         style={{
           position: "absolute",
+          pointerEvents: "none",
           zIndex: -1,
           right: "10%",
           width: "20%",
@@ -56,6 +59,7 @@ export const Hero = () => {
       <Box
         sx={{
           position: "absolute",
+          pointerEvents: "none",
           height: "63svh",
           width: "100%",
           left: 0,
@@ -72,6 +76,7 @@ export const Hero = () => {
         alt="robot"
         style={{
           position: "absolute",
+          pointerEvents: "none",
           zIndex: -1,
           left: 0,
           bottom: "5%",
