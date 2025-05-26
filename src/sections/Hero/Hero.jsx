@@ -56,16 +56,15 @@ export const Hero = () => {
       <Box
         sx={{
           position: "absolute",
-          height: "43svh",
+          height: "63svh",
           width: "100%",
           left: 0,
           bottom: 0,
-          background: "#201E2F",
           transform: "rotate(-180deg)",
-          //   background: "linear-gradient(rgba(32, 30, 47, 0),#201E2F )",
-          maskImage: "linear-gradient(to bottom,black 10%,transparent 80%)",
+          background: "linear-gradient(rgba(32, 30, 47, 0),#201E2F )",
+          maskImage: "linear-gradient(to bottom,#201E2F 10%,transparent 80%)",
           filter: "blur(42px)",
-          backdropFilter: "blur(40.8px)",
+          backdropFilter: "blur(100.8px)",
         }}
       />
       <img
