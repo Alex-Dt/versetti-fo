@@ -16,7 +16,7 @@ const theme = createTheme({
       color: "#FFFFFF",
     },
     fontFamily: ["Circe Rounded", "sans-serif"].join(","),
-    fontSize: 22,
+    fontSize: "22px",
     body1: {
       fontWeight: 400,
       lineHeight: 1.9,
@@ -24,19 +24,19 @@ const theme = createTheme({
     h1: {
       fontFamily: "News706 BT",
       fontWeight: 700,
-      fontSize: 86,
+      fontSize: "86px",
       lineHeight: 1,
     },
     h2: {
       fontFamily: "News706 BT",
       fontWeight: 700,
-      fontSize: 55,
+      fontSize: "55px",
       lineHeight: 1.9,
     },
     h3: {
       fontFamily: "News706 BT",
       fontWeight: 700,
-      fontSize: 26,
+      fontSize: "26px",
       lineHeight: 1.9,
     },
     h4: {
@@ -51,7 +51,7 @@ const theme = createTheme({
   },
   breakpoints: {
     values: {
-      lg: 1240, // Set lg to 1240px
+      lg: 1277,
     },
   },
   components: {
@@ -66,7 +66,7 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          fontSize: 16,
+          fontSize: "16px",
           fontFamily: "Circe Rounded",
           fontWeight: 400,
           lineHeight: 1.9,
@@ -75,6 +75,14 @@ const theme = createTheme({
           "&:hover": {
             textDecoration: "underline",
           },
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          background: "#1C1A2A!important",
+          borderRadius: "30px!important",
         },
       },
     },
