@@ -20,30 +20,34 @@ const data = [
     title: "eth",
   },
   {
-    icon: img2,
-    title: "sss",
+    icon: img6,
+    title: "ambrosus",
     height: 86,
   },
+
   {
     icon: img3,
     title: "doge",
     height: 86,
   },
+
   {
-    icon: img4,
-    title: "secuchip",
+    icon: img10,
+    title: "bit",
     height: 86,
   },
+
   {
     icon: img5,
     title: "sys",
     height: 86,
   },
   {
-    icon: img6,
-    title: "ambrosus",
+    icon: img2,
+    title: "sss",
     height: 86,
   },
+
   {
     icon: img7,
     title: "privateailabs",
@@ -60,8 +64,8 @@ const data = [
     height: 73,
   },
   {
-    icon: img10,
-    title: "bit",
+    icon: img4,
+    title: "secuchip",
     height: 86,
   },
 ];
