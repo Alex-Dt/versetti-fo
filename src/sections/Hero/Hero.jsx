@@ -53,18 +53,21 @@ export const Hero = () => {
           transform: "translate(-0%,-50%) rotate(30deg)",
         }}
       />
-      {/* <Box
+      <Box
         sx={{
           position: "absolute",
           height: "43svh",
           width: "100%",
           left: 0,
           bottom: 0,
-          background: "linear-gradient(rgba(32, 30, 47, 0),#201E2F )",
-          //   filter: "blur(10.8px)",
-          //   backdropFilter: "blur(0.8px)",
+          background: "#201E2F",
+          transform: "rotate(-180deg)",
+          //   background: "linear-gradient(rgba(32, 30, 47, 0),#201E2F )",
+          maskImage: "linear-gradient(to bottom,black 10%,transparent 80%)",
+          filter: "blur(42px)",
+          backdropFilter: "blur(40.8px)",
         }}
-      /> */}
+      />
       <img
         src={robot}
         alt="robot"
@@ -97,7 +100,13 @@ export const Hero = () => {
             },
           }}
         >
-          <Typography maxWidth={800} variant={"h1"} textAlign={"center"}>
+          <Typography
+            maxWidth={800}
+            position={"relative"}
+            zIndex={20}
+            variant={"h1"}
+            textAlign={"center"}
+          >
             It’s not possible to reach the stars and live forever... Yet.
           </Typography>
         </Stack>

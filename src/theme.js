@@ -53,6 +53,9 @@ const theme = createTheme({
       fontFamily: "News706 BT",
       fontWeight: 700,
       fontSize: "26px",
+      [`@media (max-width:600px)`]: {
+        fontSize: "23px",
+      },
       lineHeight: 1.9,
     },
     h4: {
