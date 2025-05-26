@@ -6,6 +6,8 @@ import img1 from "../../assets/images/whatwedo/1.png";
 import img2 from "../../assets/images/whatwedo/2.png";
 import img3 from "../../assets/images/whatwedo/3.png";
 
+import flower_blur from "../../assets/images/flower-blur.png";
+
 const data = [
   {
     icon: img1,
@@ -26,16 +28,64 @@ const data = [
 
 export const WhatWeDo = () => {
   return (
-    <Box component={"section"} id="mission">
+    <Box
+      component={"section"}
+      sx={{
+        position: "relative",
+      }}
+      id="mission"
+    >
       <Container>
         <Stack
           sx={{
+            position: "relative",
             mb: {
               xs: "73px",
               sm: "87px",
             },
           }}
         >
+          <img
+            src={flower_blur}
+            alt="robot"
+            style={{
+              position: "absolute",
+              zIndex: -1,
+              right: "0%",
+              width: "40%",
+              maxWidth: "495px",
+              top: "-15%",
+              transform: "translate(-0%,-50%) rotate(-10deg)",
+            }}
+          />
+
+          <img
+            src={flower_blur}
+            alt="robot"
+            style={{
+              position: "absolute",
+              zIndex: -1,
+              left: "15%",
+              width: "30%",
+              maxWidth: "219px",
+              top: "55%",
+              transform: "translate(-0%,-50%) rotate(-60deg)",
+            }}
+          />
+
+          <img
+            src={flower_blur}
+            alt="robot"
+            style={{
+              position: "absolute",
+              zIndex: -1,
+              right: "8%",
+              width: "30%",
+              maxWidth: "99px",
+              top: "64%",
+              transform: "translate(-0%,-50%) rotate(30deg)",
+            }}
+          />
           <Typography
             sx={{
               mb: {

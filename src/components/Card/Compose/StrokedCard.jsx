@@ -9,6 +9,7 @@ export const StrokedCard = ({ icon, title }) => {
         sx={{
           flex: 1,
           borderRadius: "30px",
+          background: "transparent",
         }}
       >
         <Stack

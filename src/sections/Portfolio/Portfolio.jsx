@@ -3,6 +3,8 @@ import { Card } from "../../components/Card";
 import { SolanaLogo } from "../../assets/images/portfolios/solanaLogo";
 import { SonicLogo } from "../../assets/images/portfolios/sonicLogo";
 
+import flower_blur from "../../assets/images/flower-blur.png";
+
 const data = [
   {
     icon: <SolanaLogo height={62} />,
@@ -20,12 +22,26 @@ export const Portfolio = () => {
       <Container>
         <Stack
           sx={{
+            position: "relative",
             mb: {
               xs: "61px",
               sm: "51px",
             },
           }}
         >
+          <img
+            src={flower_blur}
+            alt="robot"
+            style={{
+              position: "absolute",
+              left: "20%",
+              width: "30%",
+              maxWidth: "180px",
+              bottom: "-60%",
+              transform: "translate(-0%,-50%) rotate(-70deg)",
+              zIndex: 200,
+            }}
+          />
           <Typography mb={"24px"} variant={"h2"}>
             Portfolio
           </Typography>

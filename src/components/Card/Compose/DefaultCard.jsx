@@ -8,6 +8,7 @@ export const DefaultCard = ({ title, text, icon }) => {
         sx={{
           border: 0,
           flex: 1,
+          background: "#00000000",
         }}
       >
         <Stack gap={1}>
