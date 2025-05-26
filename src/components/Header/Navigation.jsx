@@ -11,7 +11,7 @@ import { menu } from "../../constants/navigation";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 
-export const Navigation = ({ isOpen, setIsOpen }) => {
+export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
   };
@@ -42,6 +42,39 @@ export const Navigation = ({ isOpen, setIsOpen }) => {
 
   //     return () => window.removeEventListener("scroll", handleScroll);
   //   }, []);
+  if (isMobile) {
+    return (
+      <Stack>
+        <Box component="nav">
+          <Stack direction="column">
+            {menu.map(({ title, href }) => {
+              return (
+                <Link
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  sx={{
+                    p: 2,
+                    textAlign: "center",
+                    textTransform: "uppercase",
+                    fontWeight: 500,
+                    fontSize: "24px",
+                  }}
+                  color={
+                    "inherit"
+                    //   activeSection === title.toLowerCase() ? "red" : "inherit"
+                  }
+                  underline="none"
+                >
+                  {title}
+                </Link>
+              );
+            })}
+          </Stack>
+        </Box>
+      </Stack>
+    );
+  }
+
   return (
     <Stack>
       <Box component="nav">

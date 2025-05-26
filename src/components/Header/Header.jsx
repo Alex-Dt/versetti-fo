@@ -1,4 +1,4 @@
-import { Box, Link, Stack, useMediaQuery } from "@mui/material";
+import { Box, Collapse, Link, Stack, useMediaQuery } from "@mui/material";
 import { Container } from "../Container";
 import { Logo } from "../../assets/images/logo";
 import { Navigation } from "./Navigation";
@@ -31,6 +31,11 @@ export const Header = () => {
         backdropFilter: isScrolled ? "blur(8px)" : "none",
         background: isScrolled ? "#3A3D578A" : "transparent",
         transition: "all 0.3s ease-out",
+        ...(isOpen &&
+          !isDesktop && {
+            background: "#3A3D578A",
+            backdropFilter: "blur(8px)",
+          }),
       }}
     >
       <Container>
@@ -54,6 +59,13 @@ export const Header = () => {
           </Link>
           <Navigation {...{ isOpen, setIsOpen }} />
         </Stack>
+        {!isDesktop && (
+          <Stack>
+            <Collapse in={isOpen} timeout="auto" unmountOnExit>
+              <Navigation {...{ isOpen, setIsOpen }} isMobile={true} />
+            </Collapse>
+          </Stack>
+        )}
       </Container>
     </Box>
   );
