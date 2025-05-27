@@ -19,7 +19,7 @@ const theme = createTheme({
     fontSize: 19,
     body1: {
       fontWeight: 400,
-      lineHeight: 1.9,
+      lineHeight: 1.41,
     },
     h1: {
       fontFamily: "News706 BT",
