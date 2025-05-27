@@ -15,10 +15,10 @@ const theme = createTheme({
     allVariants: {
       color: "#FFFFFF",
     },
-    fontFamily: ["Circe Rounded", "sans-serif"].join(","),
+    fontFamily: ["Raleway", "sans-serif"].join(","),
     fontSize: 19,
     body1: {
-      fontWeight: 400,
+      fontWeight: 500,
       lineHeight: 1.41,
     },
     h1: {
@@ -94,9 +94,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: "16px",
-          fontFamily: "Circe Rounded",
-          fontWeight: 400,
-          lineHeight: 1.9,
+          fontFamily: "Raleway",
+          fontWeight: 500,
+          lineHeight: 1.41,
           color: "#FFFFFF",
           textDecoration: "none",
           "&:hover": {
