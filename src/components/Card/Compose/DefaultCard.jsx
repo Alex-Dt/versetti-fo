@@ -13,6 +13,7 @@ export const DefaultCard = ({ title, text, icon }) => {
       >
         <Stack gap={1}>
           <img
+            loading="lazy"
             src={icon}
             alt={title}
             style={{

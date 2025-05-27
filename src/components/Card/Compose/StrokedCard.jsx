@@ -23,6 +23,7 @@ export const StrokedCard = ({ icon, title }) => {
           alignItems={"center"}
         >
           <img
+            loading="lazy"
             style={{
               height: 63,
               minHeight: 63,

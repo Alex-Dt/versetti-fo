@@ -46,6 +46,7 @@ export const WhatWeDo = () => {
           }}
         >
           <img
+            loading="lazy"
             src={flower_blur}
             alt="robot"
             style={{
@@ -62,6 +63,7 @@ export const WhatWeDo = () => {
           />
 
           <img
+            loading="lazy"
             src={flower_blur}
             alt="robot"
             style={{
@@ -78,6 +80,7 @@ export const WhatWeDo = () => {
           />
 
           <img
+            loading="lazy"
             src={flower_blur}
             alt="robot"
             style={{

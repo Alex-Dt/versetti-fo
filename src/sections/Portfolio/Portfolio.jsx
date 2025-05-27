@@ -30,6 +30,7 @@ export const Portfolio = () => {
           }}
         >
           <img
+            loading="lazy"
             src={flower_blur}
             alt="robot"
             style={{

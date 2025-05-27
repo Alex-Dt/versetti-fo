@@ -33,6 +33,7 @@ export const Verticals = () => {
       id="activities"
     >
       <img
+        loading="lazy"
         src={blur2}
         alt="robot"
         style={{
@@ -55,6 +56,7 @@ export const Verticals = () => {
           }}
         >
           <img
+            loading="lazy"
             src={flower_blur}
             alt="robot"
             style={{

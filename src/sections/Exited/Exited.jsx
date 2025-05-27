@@ -110,6 +110,7 @@ export const Exited = () => {
                     border={"0.5px solid #3C3950"}
                   >
                     <img
+                      loading="lazy"
                       style={{
                         width: _data?.isCustom ? "auto" : "100%",
                         height: isDesktop ? _data.height : 50,

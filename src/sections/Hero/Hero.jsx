@@ -17,7 +17,7 @@ export const Hero = () => {
     >
       <img
         src={blur1}
-        alt="robot"
+        alt="bg"
         style={{
           position: "absolute",
           pointerEvents: "none",
@@ -28,8 +28,9 @@ export const Hero = () => {
         }}
       />
       <img
+        loading="lazy"
         src={flower_blur}
-        alt="robot"
+        alt="flower"
         style={{
           position: "absolute",
           pointerEvents: "none",
@@ -43,8 +44,9 @@ export const Hero = () => {
       />
 
       <img
+        loading="lazy"
         src={flower_blur}
-        alt="robot"
+        alt="flower"
         style={{
           position: "absolute",
           pointerEvents: "none",
