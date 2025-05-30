@@ -3,6 +3,7 @@ import { Container } from "../../components/Container";
 
 import robot from "../../assets/images/robot.png";
 import blur1 from "../../assets/images/blur1.png";
+import bg_flower from "../../assets/images/bg_flowers.png";
 import flower_blur from "../../assets/images/flower-blur.png";
 
 export const Hero = () => {
@@ -35,13 +36,36 @@ export const Hero = () => {
           position: "absolute",
           pointerEvents: "none",
           zIndex: -1,
-          left: "62%",
+          left: "68%",
           width: "20%",
           maxWidth: "318px",
           top: "65%",
           transform: "translate(-0%,-50%)",
         }}
       />
+
+      {isDesktop && (
+        <img
+          loading="lazy"
+          src={bg_flower}
+          alt="flower"
+          style={{
+            position: "absolute",
+            pointerEvents: "none",
+            // zIndex: -1,
+            left: "20px",
+            width: "calc(100%)",
+            height: "100%",
+            objectPosition: "left center",
+            objectFit: "contain",
+            // maxWidth: "318px",
+            top: "25%",
+
+            transform: "rotate(5.52deg)",
+            // "translate(-0%,-50%)",
+          }}
+        />
+      )}
 
       <img
         loading="lazy"
