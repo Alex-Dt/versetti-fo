@@ -116,7 +116,9 @@ export const Hero = () => {
             }}
             textAlign={"center"}
           >
-            It’s not possible to reach the stars and live forever...
+            It’s not possible
+            <br />
+            to reach the stars and live forever...
             <br />
             Yet.
           </Typography>

@@ -5,12 +5,13 @@ import { Portfolio } from "../../sections/Portfolio";
 import { Exited } from "../../sections/Exited";
 import { Container } from "../../components/Container";
 import { Box, Stack, Typography } from "@mui/material";
+import { Menu } from "../../constants/navigation";
 
 export const HomePage = () => {
   return (
     <>
       <Hero />
-      <Box comonent="section" id="founder">
+      <Box comonent="section" id={Menu[0].id}>
         <Container>
           <Stack
             gap={3}

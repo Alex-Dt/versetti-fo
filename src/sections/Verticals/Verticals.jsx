@@ -30,7 +30,6 @@ export const Verticals = () => {
       sx={{
         position: "relative",
       }}
-      id="activities"
     >
       <img
         loading="lazy"

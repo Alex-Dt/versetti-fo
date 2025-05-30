@@ -4,6 +4,7 @@ import { SolanaLogo } from "../../assets/images/portfolios/solanaLogo";
 import { SonicLogo } from "../../assets/images/portfolios/sonicLogo";
 
 import flower_blur from "../../assets/images/flower-blur.png";
+import { Menu } from "../../constants/navigation";
 
 const data = [
   {
@@ -18,7 +19,7 @@ const data = [
 
 export const Portfolio = () => {
   return (
-    <Box component={"section"} id="portfolio">
+    <Box component={"section"} id={Menu[3].id}>
       <Container>
         <Stack
           sx={{

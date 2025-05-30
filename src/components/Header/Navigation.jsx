@@ -6,7 +6,7 @@ import {
   useMediaQuery,
   Button,
 } from "@mui/material";
-import { menu } from "../../constants/navigation";
+import { Menu } from "../../constants/navigation";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -47,7 +47,7 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
       <Stack>
         <Box component="nav">
           <Stack direction="column">
-            {menu.map(({ title, href }) => {
+            {Menu.map(({ title, href }) => {
               return (
                 <Link
                   key={title}
@@ -101,7 +101,7 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
             </Stack>
           )}
           {isDesktop &&
-            menu.map(({ title, href }) => {
+            Menu.map(({ title, href }) => {
               return (
                 <Link
                   key={`desktop_menu_${title}`}

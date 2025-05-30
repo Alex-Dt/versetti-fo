@@ -7,6 +7,7 @@ import img2 from "../../assets/images/whatwedo/2.svg";
 import img3 from "../../assets/images/whatwedo/3.svg";
 
 import flower_blur from "../../assets/images/flower-blur.png";
+import { Menu } from "../../constants/navigation";
 
 const data = [
   {
@@ -33,7 +34,7 @@ export const WhatWeDo = () => {
       sx={{
         position: "relative",
       }}
-      id="mission"
+      id={Menu[1].id}
     >
       <Container>
         <Stack
