@@ -34,7 +34,7 @@ export const HomePage = () => {
             <Typography fontSize={22}>
               Founded by the serial entrepreneur{" "}
               <Link
-                href="https://www.linkedin.com/in/angelversetti/"
+                href="https://linkedin.com/in/angelversetti/"
                 target="_blank"
                 sx={{
                   textDecoration: "underline",
