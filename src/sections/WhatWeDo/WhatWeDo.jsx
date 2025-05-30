@@ -115,7 +115,7 @@ export const WhatWeDo = () => {
               },
               gap: {
                 xs: 10,
-                sm: "6%",
+                sm: "5.5%",
               },
             }}
           >
