@@ -93,7 +93,7 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          fontSize: "16px",
+          // fontSize: "16px",
           fontFamily: "Raleway",
           fontWeight: 500,
           lineHeight: 1.41,

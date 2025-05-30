@@ -4,7 +4,7 @@ import { Verticals } from "../../sections/Verticals";
 import { Portfolio } from "../../sections/Portfolio";
 import { Exited } from "../../sections/Exited";
 import { Container } from "../../components/Container";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import { Menu } from "../../constants/navigation";
 
 export const HomePage = () => {
@@ -32,9 +32,19 @@ export const HomePage = () => {
             }}
           >
             <Typography fontSize={22}>
-              Founded by the serial entrepreneur Angel Versetti, our Family
-              Office seeks out the boldest deep tech ventures and nurtures them
-              with funding, strategic guidance and operational support.
+              Founded by the serial entrepreneur{" "}
+              <Link
+                href="https://www.linkedin.com/in/angelversetti/"
+                target="_blank"
+                sx={{
+                  textDecoration: "underline",
+                }}
+              >
+                Angel Versetti
+              </Link>
+              , our Family Office seeks out the boldest deep tech ventures and
+              nurtures them with funding, strategic guidance and operational
+              support.
             </Typography>
 
             <Typography fontSize={22}>
