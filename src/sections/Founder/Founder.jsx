@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Link, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Menu } from "../../constants/navigation";
 
@@ -10,18 +10,36 @@ export const Founder = () => {
           <Typography variant={"h2"}>Founder</Typography>
           <Stack gap={4}>
             <Typography>
-              Angel Versetti is the Founder of Versetti Family Office and Owner
-              of DOGE.ORG (the original Dogecoin community). He is a serial
-              entrepreneur and investor, having previously co-founded and exited
-              PrivateAI, Ambrosus, GintonicAI and Smart Security Systems.
+              <Link
+                href="https://linkedin.com/in/angelversetti/"
+                target="_blank"
+                sx={{
+                  textDecoration: "underline",
+                }}
+              >
+                Angel Versetti
+              </Link>{" "}
+              is the Founder of Versetti Family Office and Owner of DOGE.ORG
+              (the original Dogecoin community). He is a serial entrepreneur and
+              investor, having previously co-founded and exited PrivateAI,
+              Ambrosus, GintonicAI and Smart Security Systems.
             </Typography>
             <Typography>
               His family office's funds specialize in turnarounds of
               cryptocurrencies and have been institutional investors in Solana,
-              Syscoin, Ethereum and Sonic. Prior to his entrepreneurial journey,
-              Angel Versetti was a project lead and researcher at the United
-              Nations (incl. UNIDIR Weapons of Mass Destruction Program, UNESCAP
-              Trade and Investment Division, UNEP Investments in Sustainable
+              Syscoin, Ethereum and Sonic. Prior to his entrepreneurial journey,{" "}
+              <Link
+                href="https://linkedin.com/in/angelversetti/"
+                target="_blank"
+                sx={{
+                  textDecoration: "underline",
+                }}
+              >
+                Angel Versetti
+              </Link>{" "}
+              was a project lead and researcher at the United Nations (incl.
+              UNIDIR Weapons of Mass Destruction Program, UNESCAP Trade and
+              Investment Division, UNEP Investments in Sustainable
               Technologies).
             </Typography>
             <Typography>
@@ -37,9 +55,18 @@ export const Founder = () => {
               and NASDAQ.
             </Typography>
             <Typography>
-              Angel Versetti is passionate about longevity (human life extension
-              technologies) and has actively funded and donated to R&D
-              initiatives in this domain.
+              <Link
+                href="https://linkedin.com/in/angelversetti/"
+                target="_blank"
+                sx={{
+                  textDecoration: "underline",
+                }}
+              >
+                Angel Versetti
+              </Link>{" "}
+              is passionate about longevity (human life extension technologies)
+              and has actively funded and donated to R&D initiatives in this
+              domain.
             </Typography>
           </Stack>
         </Stack>
