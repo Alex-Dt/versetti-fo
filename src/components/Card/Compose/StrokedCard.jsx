@@ -33,9 +33,7 @@ export const StrokedCard = ({ icon, title }) => {
             src={icon}
             alt={title}
           />
-          <Typography variant={"h3"} textAlign={"justify"}>
-            {title}
-          </Typography>
+          <Typography variant={"h3"}>{title}</Typography>
         </Stack>
       </Card>
     </>

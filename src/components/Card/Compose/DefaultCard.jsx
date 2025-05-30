@@ -30,7 +30,7 @@ export const DefaultCard = ({ title, text, icon }) => {
             sx={{
               textAlign: {
                 xs: "center",
-                sm: "left",
+                sm: "justify",
               },
             }}
           >
