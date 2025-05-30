@@ -32,6 +32,7 @@ export const DefaultCard = ({ title, text, icon }) => {
                 xs: "center",
                 sm: "justify",
               },
+              textWrap: "balance",
             }}
           >
             {text}
