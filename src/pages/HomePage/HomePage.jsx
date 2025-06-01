@@ -6,6 +6,7 @@ import { Exited } from "../../sections/Exited";
 import { Container } from "../../components/Container";
 import { Box, Link, Stack, Typography } from "@mui/material";
 import { Menu } from "../../constants/navigation";
+import { Founder } from "../../sections/Founder";
 
 export const HomePage = () => {
   return (
@@ -62,6 +63,7 @@ export const HomePage = () => {
       </Box>
       <WhatWeDo />
       <Verticals />
+      <Founder />
       <Portfolio />
       <Exited />
     </>
