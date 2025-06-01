@@ -3,7 +3,7 @@ import { Container } from "../../components/Container";
 
 import robot from "../../assets/images/robot.png";
 import blur1 from "../../assets/images/blur1.png";
-import bg_flower from "../../assets/images/bg_flowers.png";
+// import bg_flower from "../../assets/images/bg_flowers.png";
 import flower_blur from "../../assets/images/flower-blur.png";
 import bg_robot_with_flowers from "../../assets/images/bg.png";
 
@@ -67,7 +67,7 @@ export const Hero = () => {
         />
       )}
 
-      {false && isDesktop && (
+      {/* {false && isDesktop && (
         <img
           loading="lazy"
           src={bg_flower}
@@ -88,7 +88,7 @@ export const Hero = () => {
             // "translate(-0%,-50%)",
           }}
         />
-      )}
+      )} */}
 
       {!isDesktop && (
         <img
