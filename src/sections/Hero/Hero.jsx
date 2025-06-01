@@ -5,6 +5,7 @@ import robot from "../../assets/images/robot.png";
 import blur1 from "../../assets/images/blur1.png";
 import bg_flower from "../../assets/images/bg_flowers.png";
 import flower_blur from "../../assets/images/flower-blur.png";
+import bg_robot_with_flowers from "../../assets/images/bg.png";
 
 export const Hero = () => {
   const isDesktop = useMediaQuery("(min-width:600px)");
@@ -28,23 +29,45 @@ export const Hero = () => {
           top: 0,
         }}
       />
-      <img
-        loading="lazy"
-        src={flower_blur}
-        alt="flower"
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          zIndex: -1,
-          left: "68%",
-          width: "20%",
-          maxWidth: "318px",
-          top: "65%",
-          transform: "translate(-0%,-50%)",
-        }}
-      />
 
       {isDesktop && (
+        <img
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            // 1800,
+            // "100%",
+            minWidth: 1800,
+            zIndex: -20,
+            pointerEvents: "none",
+            height: "100%",
+            objectFit: "contain",
+            objectPosition: "left bottom",
+          }}
+          src={bg_robot_with_flowers}
+        />
+      )}
+      {!isDesktop && (
+        <img
+          loading="lazy"
+          src={flower_blur}
+          alt="flower"
+          style={{
+            position: "absolute",
+            pointerEvents: "none",
+            zIndex: -1,
+            left: "68%",
+            width: "20%",
+            maxWidth: "318px",
+            top: "65%",
+            transform: "translate(-0%,-50%)",
+          }}
+        />
+      )}
+
+      {false && isDesktop && (
         <img
           loading="lazy"
           src={bg_flower}
@@ -67,21 +90,23 @@ export const Hero = () => {
         />
       )}
 
-      <img
-        loading="lazy"
-        src={flower_blur}
-        alt="flower"
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          zIndex: -1,
-          right: "10%",
-          width: "20%",
-          maxWidth: "96px",
-          top: "43%",
-          transform: "translate(-0%,-50%) rotate(30deg)",
-        }}
-      />
+      {!isDesktop && (
+        <img
+          loading="lazy"
+          src={flower_blur}
+          alt="flower"
+          style={{
+            position: "absolute",
+            pointerEvents: "none",
+            zIndex: -1,
+            right: "10%",
+            width: "20%",
+            maxWidth: "96px",
+            top: "43%",
+            transform: "translate(-0%,-50%) rotate(30deg)",
+          }}
+        />
+      )}
       <Box
         sx={{
           position: "absolute",
@@ -97,21 +122,23 @@ export const Hero = () => {
           backdropFilter: "blur(100.8px)",
         }}
       />
-      <img
-        src={robot}
-        alt="robot"
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          zIndex: -1,
-          left: 0,
-          bottom: "5%",
-          //   top: "100%",
-          maxHeight: "90vh",
-          ...(!isDesktop && { maxHeight: "70vh", left: -60 }),
-          //   transform: "translateY(-50%) rotate(-7.29deg)",
-        }}
-      />
+      {!isDesktop && (
+        <img
+          src={robot}
+          alt="robot"
+          style={{
+            position: "absolute",
+            pointerEvents: "none",
+            zIndex: -1,
+            left: 0,
+            bottom: "5%",
+            //   top: "100%",
+            maxHeight: "90vh",
+            ...(!isDesktop && { maxHeight: "70vh", left: -60 }),
+            //   transform: "translateY(-50%) rotate(-7.29deg)",
+          }}
+        />
+      )}
       <Container>
         <Stack
           minHeight={"100svh"}
