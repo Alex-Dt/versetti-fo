@@ -94,6 +94,7 @@ export const Footer = () => {
               </Stack>
               <Typography
                 sx={{
+                  textAlign: "justify",
                   display: {
                     xs: "none",
                     sm: "flex",
