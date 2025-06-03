@@ -150,21 +150,25 @@ export const Hero = () => {
               sm: 0,
             },
             pr: {
-              xs: "20px",
+              xs: "0px",
             },
             pl: {
-              xs: "20px",
+              xs: "0px",
             },
           }}
         >
           <Typography
-            maxWidth={730}
+            // maxWidth={730}
+            sx={{
+              letterSpacing: "-4%",
+              maxWidth: {
+                xs: 330,
+                sm: 730,
+              },
+            }}
             position={"relative"}
             zIndex={20}
             variant={"h1"}
-            sx={{
-              letterSpacing: "-4%",
-            }}
             textAlign={"center"}
           >
             It’s not possible
