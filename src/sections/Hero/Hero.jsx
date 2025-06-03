@@ -166,7 +166,7 @@ export const Hero = () => {
                 xs: 730,
               },
               fontSize: {
-                xs: "clamp(1.5rem, 10vw, 3.5rem)",
+                xs: "clamp(1.5rem, 11vw, 4.5rem)",
                 sm: "86px",
               },
             }}
