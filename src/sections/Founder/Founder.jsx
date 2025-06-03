@@ -9,7 +9,7 @@ export const Founder = () => {
         <Stack mb={"125px"} gap={4}>
           <Typography variant={"h2"}>Founder</Typography>
           <Stack>
-            <Typography>
+            <Typography textAlign={"justify"}>
               <Link
                 href="https://linkedin.com/in/angelversetti/"
                 target="_blank"

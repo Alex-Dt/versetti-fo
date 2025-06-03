@@ -123,7 +123,7 @@ export const Footer = () => {
                 },
                 opacity: 0.5,
                 fontSize: 13,
-                textAlign: "center",
+                textAlign: "justify",
               }}
               color={"#837BBE"}
               mt={4}

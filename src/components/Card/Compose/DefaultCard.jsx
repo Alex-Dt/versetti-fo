@@ -29,7 +29,7 @@ export const DefaultCard = ({ title, text, icon }) => {
           <Typography
             sx={{
               textAlign: {
-                xs: "center",
+                xs: "justify",
                 sm: "justify",
               },
               // textWrap: "pretty",

@@ -19,8 +19,8 @@ export const HomePage = () => {
             sx={{
               maxWidth: 1200,
               textAlign: {
-                xs: "center",
-                sm: "left",
+                xs: "justify",
+                sm: "justify",
               },
               pt: {
                 xs: "0px",
