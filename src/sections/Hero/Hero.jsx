@@ -162,8 +162,12 @@ export const Hero = () => {
             sx={{
               letterSpacing: "-4%",
               maxWidth: {
-                xs: 330,
-                sm: 730,
+                // xs: 330,
+                xs: 730,
+              },
+              fontSize: {
+                xs: "clamp(1.5rem, 10vw, 3.5rem)",
+                sm: "86px",
               },
             }}
             position={"relative"}
@@ -174,6 +178,7 @@ export const Hero = () => {
             It’s not possible
             <br />
             to reach the stars and live forever...
+            <br />
             <br />
             Yet.
           </Typography>
