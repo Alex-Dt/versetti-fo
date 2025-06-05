@@ -4,6 +4,8 @@ import bgImage from "../../assets/images/bg2.png";
 
 import { Container } from "../../components/Container";
 
+import style from "./style.module.css";
+
 export const Hero = () => {
   return (
     <Box
@@ -116,6 +118,7 @@ export const Hero = () => {
             }}
           >
             <Typography
+              className={style.h1}
               variant="h1"
               sx={{
                 mb: {
@@ -134,14 +137,15 @@ export const Hero = () => {
                 },
               }}
             >
-              It’s not possible
+              <span>It’s</span> <span>not</span> <span>possible</span>
               <br />
-              to reach the stars
+              <span>to</span> <span>reach</span> <span>the</span>{" "}
+              <span>stars</span>
               <br />
-              and live forever...
+              <span>and</span> <span>live</span> <span>forever...</span>
               <br />
               <br />
-              Yet.
+              <span>Yet.</span>
             </Typography>
           </Grid>
         </Grid>
