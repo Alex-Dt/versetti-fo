@@ -11,7 +11,7 @@ import img6 from "../../assets/images/exited/ambrosus.svg";
 import img7 from "../../assets/images/exited/privateailabs.png";
 import img8 from "../../assets/images/exited/numerai.svg";
 import img9 from "../../assets/images/exited/bat3.svg";
-import img10 from "../../assets/images/exited/bit.png";
+import img10 from "../../assets/images/exited/bit.svg";
 
 const data = [
   {
