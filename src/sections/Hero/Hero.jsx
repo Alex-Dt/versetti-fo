@@ -87,7 +87,7 @@ export const Hero = () => {
 
       <Container
         sx={{
-          minHeight: "100vh",
+          minHeight: "100svh",
           display: "flex",
           flexDirection: "column",
           maxWidth: "100%!important",
