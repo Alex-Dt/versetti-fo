@@ -115,9 +115,7 @@ export const Exited = () => {
                         width: _data?.isCustom ? "auto" : "100%",
                         height: isDesktop ? _data.height : 50,
                         objectFit: "contain",
-                        ...(_data?.isCustom
-                          ? { mixBlendMode: "none" }
-                          : { mixBlendMode: "screen" }),
+                        mixBlendMode: "screen",
                       }}
                       src={_data.icon}
                       alt={_data.title}
