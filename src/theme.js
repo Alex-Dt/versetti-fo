@@ -4,8 +4,8 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "#201E2F",
-      paper: "#201E2F",
+      default: "#1E1D2E",
+      paper: "#1E1D2E",
     },
     text: {
       primary: "#FFFFFF",
@@ -28,12 +28,12 @@ const theme = createTheme({
       //   xs: "37px",
       //   sm: "86px",
       // },
-      [`@media (max-width:600px)`]: {
-        fontSize: "37px",
-      },
-      [`@media (min-width:600px)`]: {
-        fontSize: "86px",
-      },
+      // [`@media (max-width:600px)`]: {
+      //   fontSize: "37px",
+      // },
+      // [`@media (min-width:600px)`]: {
+      //   fontSize: "77px",
+      // },
       lineHeight: 1,
     },
     h2: {

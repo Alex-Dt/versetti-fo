@@ -1,14 +1,10 @@
-import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+
+import bgImage from "../../assets/images/bg2.png";
+
 import { Container } from "../../components/Container";
 
-import robot from "../../assets/images/robot.png";
-import blur1 from "../../assets/images/blur1.png";
-// import bg_flower from "../../assets/images/bg_flowers.png";
-import flower_blur from "../../assets/images/flower-blur.png";
-import bg_robot_with_flowers from "../../assets/images/bg.png";
-
 export const Hero = () => {
-  const isDesktop = useMediaQuery("(min-width:600px)");
   return (
     <Box
       component="section"
@@ -17,172 +13,138 @@ export const Hero = () => {
         position: "relative",
       }}
     >
-      <img
-        src={blur1}
-        alt="bg"
-        style={{
-          position: "absolute",
-          pointerEvents: "none",
-          zIndex: -1,
-          width: "100%",
-          right: 0,
-          top: 0,
-        }}
-      />
-
-      {isDesktop && (
-        <img
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: "100%",
-            // 1800,
-            // "100%",
-            minWidth: 1800,
-            zIndex: -20,
-            pointerEvents: "none",
-            height: "100%",
-            objectFit: "contain",
-            objectPosition: "left bottom",
-          }}
-          src={bg_robot_with_flowers}
-        />
-      )}
-      {!isDesktop && (
-        <img
-          loading="lazy"
-          src={flower_blur}
-          alt="flower"
-          style={{
-            position: "absolute",
-            pointerEvents: "none",
-            zIndex: -1,
-            left: "68%",
-            width: "20%",
-            maxWidth: "318px",
-            top: "65%",
-            transform: "translate(-0%,-50%)",
-          }}
-        />
-      )}
-
-      {/* {false && isDesktop && (
-        <img
-          loading="lazy"
-          src={bg_flower}
-          alt="flower"
-          style={{
-            position: "absolute",
-            pointerEvents: "none",
-            // zIndex: -1,
-            left: "20px",
-            width: "calc(100%)",
-            height: "100%",
-            objectPosition: "left center",
-            objectFit: "contain",
-            // maxWidth: "318px",
-            top: "25%",
-
-            transform: "rotate(5.52deg)",
-            // "translate(-0%,-50%)",
-          }}
-        />
-      )} */}
-
-      {!isDesktop && (
-        <img
-          loading="lazy"
-          src={flower_blur}
-          alt="flower"
-          style={{
-            position: "absolute",
-            pointerEvents: "none",
-            zIndex: -1,
-            right: "10%",
-            width: "20%",
-            maxWidth: "96px",
-            top: "43%",
-            transform: "translate(-0%,-50%) rotate(30deg)",
-          }}
-        />
-      )}
       <Box
         sx={{
           position: "absolute",
-          pointerEvents: "none",
-          height: "63svh",
           width: "100%",
+          minHeight: {
+            xs: "auto",
+            md: "811px",
+          },
+          height: {
+            xs: "auto",
+            md: "100svh",
+          },
           left: 0,
-          bottom: 0,
-          transform: "rotate(-180deg)",
-          background: "linear-gradient(rgba(32, 30, 47, 0),#201E2F )",
-          maskImage: "linear-gradient(to bottom,#201E2F 10%,transparent 80%)",
-          filter: "blur(42px)",
-          backdropFilter: "blur(100.8px)",
+          top: 0,
+          zIndex: -1,
         }}
-      />
-      {!isDesktop && (
-        <img
-          src={robot}
-          alt="robot"
-          style={{
-            position: "absolute",
-            pointerEvents: "none",
-            zIndex: -1,
+      >
+        <Box
+          component="img"
+          src={bgImage}
+          alt="bg"
+          sx={{
+            position: "relative",
+            top: 0,
             left: 0,
-            bottom: "5%",
-            //   top: "100%",
-            maxHeight: "90vh",
-            ...(!isDesktop && { maxHeight: "70vh", left: -60 }),
-            //   transform: "translateY(-50%) rotate(-7.29deg)",
+            width: "100%",
+            minWidth: {
+              xs: "250vw",
+              md: 1511,
+            },
+            height: "100%",
+            minHeight: {
+              xs: "auto",
+              sm: 811,
+            },
+            objectFit: {
+              xs: "contain",
+              md: "cover",
+            },
+            objectPosition: "left top",
+            zIndex: -10,
           }}
         />
-      )}
-      <Container>
-        <Stack
-          minHeight={"100svh"}
-          alignItems={{ xs: "center" }}
-          justifyContent={{ xs: "flex-end", sm: "center" }}
+
+        <Box
           sx={{
-            pb: {
-              xs: "60px",
-              sm: 0,
-            },
-            pr: {
-              xs: "0px",
-            },
-            pl: {
-              xs: "0px",
+            position: "absolute",
+            pointerEvents: "none",
+            height: "30vh",
+            width: "100%",
+            left: 0,
+            bottom: 0,
+            background: "linear-gradient(rgba(32, 30, 47, 0),#1E1D2E )",
+            zIndex: -9,
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            pointerEvents: "none",
+            height: "30vh",
+            width: "100%",
+            left: 0,
+            bottom: 0,
+            mask: "linear-gradient(#1E1D2E, #1E1D2E, transparent)",
+            backdropFilter: "blur(9px)",
+            transform: "rotate(-180deg)",
+            zIndex: -8,
+          }}
+        />
+      </Box>
+
+      <Container
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          maxWidth: "100%!important",
+        }}
+      >
+        <Grid
+          flex={1}
+          container
+          sx={{
+            alignItems: {
+              xs: "flex-end",
+              md: "center",
             },
           }}
         >
-          <Typography
-            // maxWidth={730}
-            sx={{
-              letterSpacing: "-4%",
-              maxWidth: {
-                // xs: 330,
-                xs: 730,
-              },
-              fontSize: {
-                xs: "clamp(1.5rem, 11vw, 4.5rem)",
-                sm: "86px",
-              },
+          <Grid
+            size={{
+              xs: 0,
+              md: 6,
             }}
-            position={"relative"}
-            zIndex={20}
-            variant={"h1"}
-            textAlign={"center"}
+          />
+          <Grid
+            size={{
+              xs: 12,
+              md: 6,
+            }}
           >
-            It’s not possible
-            <br />
-            to reach the stars and live forever...
-            <br />
-            <br />
-            Yet.
-          </Typography>
-        </Stack>
+            <Typography
+              variant="h1"
+              sx={{
+                mb: {
+                  xs: 8,
+                  md: 0,
+                },
+                fontSize: {
+                  xs: "clamp(30px, 10vw, 77px)",
+                  sm: "clamp(37px, 7.28vw, 77px)",
+                  md: "clamp(37px, 5.28vw, 77px)",
+                  lg: "clamp(37px, 4.28vw, 77px)",
+                },
+                textAlign: {
+                  xs: "center",
+                  md: "left",
+                },
+              }}
+            >
+              It’s not possible
+              <br />
+              to reach the stars
+              <br />
+              and live forever...
+              <br />
+              <br />
+              Yet.
+            </Typography>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
