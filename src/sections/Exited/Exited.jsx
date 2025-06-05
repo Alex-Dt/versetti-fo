@@ -94,6 +94,7 @@ export const Exited = () => {
                     sx={{
                       display: "flex",
                       alignItems: "center",
+                      mixBlendMode: "screen",
                       minHeight: {
                         xs: 82,
                         sm: 140,
@@ -115,7 +116,6 @@ export const Exited = () => {
                         width: _data?.isCustom ? "auto" : "100%",
                         height: isDesktop ? _data.height : 50,
                         objectFit: "contain",
-                        mixBlendMode: "screen",
                       }}
                       src={_data.icon}
                       alt={_data.title}
