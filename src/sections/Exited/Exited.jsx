@@ -117,7 +117,7 @@ export const Exited = () => {
                         objectFit: "contain",
                         ...(_data?.isCustom
                           ? { mixBlendMode: "none" }
-                          : { mixBlendMode: "lighten" }),
+                          : { mixBlendMode: "screen" }),
                       }}
                       src={_data.icon}
                       alt={_data.title}
