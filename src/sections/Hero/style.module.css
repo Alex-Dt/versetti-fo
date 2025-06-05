@@ -92,6 +92,6 @@ span:nth-child(18) {
 @keyframes fade-in {
   100% {
     opacity: 1;
-    filter: blur(0);
+    filter: blur(0px);
   }
 }
