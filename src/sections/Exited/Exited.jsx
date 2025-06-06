@@ -8,7 +8,7 @@ import img3 from "../../assets/images/exited/doge.svg";
 import img4 from "../../assets/images/exited/secuchip.png";
 import img5 from "../../assets/images/exited/sys.svg";
 import img6 from "../../assets/images/exited/ambrosus.svg";
-import img7 from "../../assets/images/exited/privateailabs.png";
+import img7 from "../../assets/images/exited/pivateAILabs.svg";
 import img8 from "../../assets/images/exited/numerai.svg";
 import img9 from "../../assets/images/exited/bat3.svg";
 import img10 from "../../assets/images/exited/bit.svg";
