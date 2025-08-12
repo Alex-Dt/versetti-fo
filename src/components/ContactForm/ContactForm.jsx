@@ -1,6 +1,7 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CONFIG } from "../../constants/config";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export const ContactForm = () => {
   const [isSending, setSendFlag] = useState(false);
@@ -11,6 +12,7 @@ export const ContactForm = () => {
     message: "",
     error: null,
   });
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,49 +24,57 @@ export const ContactForm = () => {
     setSendFlag(true);
     setSuccess(null);
     setFormData({ ...formData, error: null });
-    
+
+    const recaptchaValue = recaptchaRef.current.getValue();
+    if (!recaptchaValue) {
+      setFormData({ ...formData, error: "Please complete the reCAPTCHA verification." });
+      setSendFlag(false);
+      return;
+    }
+
     try {
       // Use the AWS API Gateway endpoint
       const apiEndpoint = CONFIG.VITE_API_ENDPOINT;
-      
+
       // Debug logging
-      console.log('API Endpoint:', apiEndpoint);
-      console.log('Form data being sent:', {
+      console.log("API Endpoint:", apiEndpoint);
+      console.log("Form data being sent:", {
         name: formData.name,
         email: formData.email,
         message: formData.message.slice(0, 1000),
       });
-      
+
       const requestBody = JSON.stringify({
         name: formData.name,
         email: formData.email,
         message: formData.message.slice(0, 1000),
       });
-      
-      console.log('Request body:', requestBody);
-      console.log('Request body length:', requestBody.length);
-      
+
+      console.log("Request body:", requestBody);
+      console.log("Request body length:", requestBody.length);
+
       const response = await fetch(`${apiEndpoint}/contact`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: requestBody,
       });
 
       const result = await response.json();
-      
+
       // Debug logging
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
-      console.log('Response result:', result);
-      console.log('Result success:', result.success);
-      
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+      console.log("Response result:", result);
+      console.log("Result success:", result.success);
+
       if (response.ok && response.status === 200) {
         setSuccess("Thank you! Your message was sent!");
         setFormData({ name: "", email: "", message: "", error: null });
+        recaptchaRef.current.reset();
       } else {
-        console.log('Error condition triggered');
+        console.log("Error condition triggered");
         setFormData({
           ...formData,
           error: result.error || "Something went wrong! Please try again.",
@@ -73,7 +83,7 @@ export const ContactForm = () => {
 
       setSendFlag(false);
     } catch (error) {
-      console.error('Contact form error:', error);
+      console.error("Contact form error:", error);
       setFormData({
         ...formData,
         error: "Failed to send message. Please try again later.",
@@ -86,9 +96,7 @@ export const ContactForm = () => {
     <Box component={"form"} onSubmit={handleSubmit}>
       <Stack gap={2}>
         {isSuccess && <Stack sx={{ color: "success.main" }}>{isSuccess}</Stack>}
-        {formData.error && (
-          <Stack sx={{ color: "error.main" }}>{formData.error}</Stack>
-        )}
+        {formData.error && <Stack sx={{ color: "error.main" }}>{formData.error}</Stack>}
         <Stack
           sx={{
             flexDirection: {
@@ -160,14 +168,11 @@ export const ContactForm = () => {
           variant="filled"
           placeholder="Limit to 1000 characters"
         />
+        <Stack sx={{ flexDirection: "row", justifyContent: "center", mb: 1 }}>
+          <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.VITE_GOOGLE_SITE_KEY} theme="dark" />
+        </Stack>
         <Stack>
-          <Button
-            type={"submit"}
-            variant={"contained"}
-            size={"large"}
-            loading={isSending}
-            sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}
-          >
+          <Button type={"submit"} variant={"contained"} size={"large"} loading={isSending} sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}>
             SUBMIT
           </Button>
         </Stack>

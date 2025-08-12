@@ -1,4 +1,5 @@
 export const CONFIG = {
   VITE_GOOGLE_EXCEL_KEY: import.meta.env.VITE_GOOGLE_EXCEL_KEY,
   VITE_API_ENDPOINT: import.meta.env.VITE_API_ENDPOINT,
+  VITE_GOOGLE_SITE_KEY: import.meta.env.VITE_GOOGLE_SITE_KEY,
 };
