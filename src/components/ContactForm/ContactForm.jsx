@@ -22,37 +22,41 @@ export const ContactForm = () => {
     setSendFlag(true);
     setSuccess(null);
     setFormData({ ...formData, error: null });
+    
     try {
-      const response = await fetch(
-        `https://script.google.com/macros/s/${CONFIG.VITE_GOOGLE_EXCEL_KEY}/exec`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            ...formData,
-            message: formData.message.slice(0, 1000),
-          }),
-        }
-      );
-
-      await setTimeout(() => {}, 2000);
+      // Use the AWS API Gateway endpoint
+      const apiEndpoint = CONFIG.VITE_API_ENDPOINT || 'https://your-api-id.execute-api.us-east-1.amazonaws.com/prod';
+      
+      const response = await fetch(`${apiEndpoint}/contact`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message.slice(0, 1000),
+        }),
+      });
 
       const result = await response.json();
-      if (result.success) {
+      
+      if (response.ok && result.success) {
         setSuccess("Thank you! Your message was sent!");
         setFormData({ name: "", email: "", message: "", error: null });
       } else {
         setFormData({
           ...formData,
-          error: "Something went wrong!",
+          error: result.error || "Something went wrong! Please try again.",
         });
       }
 
       setSendFlag(false);
     } catch (error) {
-      console.error(error);
+      console.error('Contact form error:', error);
       setFormData({
         ...formData,
-        error: error.message,
+        error: "Failed to send message. Please try again later.",
       });
       setSendFlag(false);
     }

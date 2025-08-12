@@ -1,0 +1,257 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "API Gateway for contact form",
+  "Parameters": {
+    "AppSyncApiName": {
+      "Type": "String"
+    },
+    "DynamoDBBillingMode": {
+      "Type": "String",
+      "Default": "PAY_PER_REQUEST",
+      "AllowedValues": [
+        "PAY_PER_REQUEST",
+        "PROVISIONED"
+      ]
+    },
+    "DynamoDBEnableServerSideEncryption": {
+      "Type": "String",
+      "Default": "false"
+    },
+    "env": {
+      "Type": "String"
+    },
+    "S3DeploymentBucket": {
+      "Type": "String"
+    },
+    "S3DeploymentRootKey": {
+      "Type": "String"
+    },
+    "functioncontactFormHandlerArn": {
+      "Type": "String"
+    },
+    "functioncontactFormHandlerName": {
+      "Type": "String"
+    }
+  },
+  "Conditions": {
+    "ShouldNotCreateEnvResources": {
+      "Fn::Equals": [
+        {
+          "Ref": "env"
+        },
+        "NONE"
+      ]
+    }
+  },
+  "Resources": {
+    "ContactApi": {
+      "Type": "AWS::ApiGateway::RestApi",
+      "Properties": {
+        "Description": "API Gateway for contact form submissions",
+        "Name": {
+          "Fn::If": [
+            "ShouldNotCreateEnvResources",
+            "contactapi",
+            {
+              "Fn::Join": [
+                "",
+                [
+                  "contactapi",
+                  "-",
+                  {
+                    "Ref": "env"
+                  }
+                ]
+              ]
+            }
+          ]
+        },
+        "EndpointConfiguration": {
+          "Types": [
+            "REGIONAL"
+          ]
+        },
+        "Policy": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": [
+                "execute-api:Invoke"
+              ],
+              "Resource": [
+                "execute-api:/*/*/*"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ContactResource": {
+      "Type": "AWS::ApiGateway::Resource",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ContactApi"
+        },
+        "ParentId": {
+          "Fn::GetAtt": [
+            "ContactApi",
+            "RootResourceId"
+          ]
+        },
+        "PathPart": "contact"
+      }
+    },
+    "ContactMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ContactApi"
+        },
+        "ResourceId": {
+          "Ref": "ContactResource"
+        },
+        "HttpMethod": "POST",
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": [
+              "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${functionArn}/invocations",
+              {
+                "region": {
+                  "Ref": "AWS::Region"
+                },
+                "functionArn": {
+                  "Ref": "functioncontactFormHandlerArn"
+                }
+              }
+            ]
+          }
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            }
+          }
+        ]
+      }
+    },
+    "ContactOptionsMethod": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ContactApi"
+        },
+        "ResourceId": {
+          "Ref": "ContactResource"
+        },
+        "HttpMethod": "OPTIONS",
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "AWS_PROXY",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": [
+              "arn:aws:apigateway:${region}:lambda:path/2015-03-31/functions/${functionArn}/invocations",
+              {
+                "region": {
+                  "Ref": "AWS::Region"
+                },
+                "functionArn": {
+                  "Ref": "functioncontactFormHandlerArn"
+                }
+              }
+            ]
+          }
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Origin": true,
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true
+            }
+          }
+        ]
+      }
+    },
+    "LambdaInvokePermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "functioncontactFormHandlerName"
+        },
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Sub": [
+            "arn:aws:execute-api:${region}:${account}:${api}/*/*/*",
+            {
+              "region": {
+                "Ref": "AWS::Region"
+              },
+              "account": {
+                "Ref": "AWS::AccountId"
+              },
+              "api": {
+                "Ref": "ContactApi"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "ContactDeployment": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "DependsOn": [
+        "ContactMethod",
+        "ContactOptionsMethod"
+      ],
+      "Properties": {
+        "RestApiId": {
+          "Ref": "ContactApi"
+        },
+        "StageName": "prod"
+      }
+    }
+  },
+  "Outputs": {
+    "RootUrl": {
+      "Description": "Root URL of the API gateway",
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Ref": "ContactApi"
+            },
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".amazonaws.com/prod"
+          ]
+        ]
+      }
+    },
+    "ApiName": {
+      "Description": "API Friendly name",
+      "Value": "contactapi"
+    },
+    "ApiId": {
+      "Description": "API ID (prefix of API URL)",
+      "Value": {
+        "Ref": "ContactApi"
+      }
+    }
+  }
+}
