@@ -25,26 +25,46 @@ export const ContactForm = () => {
     
     try {
       // Use the AWS API Gateway endpoint
-      const apiEndpoint = CONFIG.VITE_API_ENDPOINT || 'https://your-api-id.execute-api.us-east-1.amazonaws.com/prod';
+      const apiEndpoint = CONFIG.VITE_API_ENDPOINT;
+      
+      // Debug logging
+      console.log('API Endpoint:', apiEndpoint);
+      console.log('Form data being sent:', {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message.slice(0, 1000),
+      });
+      
+      const requestBody = JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message.slice(0, 1000),
+      });
+      
+      console.log('Request body:', requestBody);
+      console.log('Request body length:', requestBody.length);
       
       const response = await fetch(`${apiEndpoint}/contact`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: formData.message.slice(0, 1000),
-        }),
+        body: requestBody,
       });
 
       const result = await response.json();
       
-      if (response.ok && result.success) {
+      // Debug logging
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      console.log('Response result:', result);
+      console.log('Result success:', result.success);
+      
+      if (response.ok && response.status === 200) {
         setSuccess("Thank you! Your message was sent!");
         setFormData({ name: "", email: "", message: "", error: null });
       } else {
+        console.log('Error condition triggered');
         setFormData({
           ...formData,
           error: result.error || "Something went wrong! Please try again.",
