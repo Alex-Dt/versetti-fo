@@ -1,6 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-
-import bgImage from "../../assets/images/bg2.png";
+import bgMobileImage from "../../assets/images/bg5.png";
 
 import { Container } from "../../components/Container";
 
@@ -25,7 +24,7 @@ export const Hero = () => {
           },
           height: {
             xs: "auto",
-            md: "100svh",
+            md: "calc(100svh + 100px)",
           },
           left: 0,
           top: 0,
@@ -34,7 +33,7 @@ export const Hero = () => {
       >
         <Box
           component="img"
-          src={bgImage}
+          src={bgMobileImage}
           alt="bg"
           sx={{
             position: "relative",
@@ -54,7 +53,7 @@ export const Hero = () => {
               xs: "contain",
               md: "cover",
             },
-            objectPosition: "left top",
+            objectPosition: "0 100px",
             zIndex: -10,
           }}
         />
@@ -139,8 +138,7 @@ export const Hero = () => {
             >
               <span>It’s</span> <span>not</span> <span>possible</span>
               <br />
-              <span>to</span> <span>reach</span> <span>the</span>{" "}
-              <span>stars</span>
+              <span>to</span> <span>reach</span> <span>the</span> <span>stars</span>
               <br />
               <span>and</span> <span>live</span> <span>forever...</span>
               <br />
