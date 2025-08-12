@@ -25,11 +25,13 @@ export const ContactForm = () => {
     setSuccess(null);
     setFormData({ ...formData, error: null });
 
-    const recaptchaValue = recaptchaRef.current.getValue();
-    if (!recaptchaValue) {
-      setFormData({ ...formData, error: "Please complete the reCAPTCHA verification." });
-      setSendFlag(false);
-      return;
+    if (CONFIG.VITE_GOOGLE_SITE_KEY) {
+      const recaptchaValue = recaptchaRef.current.getValue();
+      if (!recaptchaValue) {
+        setFormData({ ...formData, error: "Please complete the reCAPTCHA verification." });
+        setSendFlag(false);
+        return;
+      }
     }
 
     try {
