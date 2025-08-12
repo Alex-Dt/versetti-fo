@@ -74,7 +74,7 @@ export const ContactForm = () => {
       if (response.ok && response.status === 200) {
         setSuccess("Thank you! Your message was sent!");
         setFormData({ name: "", email: "", message: "", error: null });
-        recaptchaRef.current.reset();
+        if (recaptchaRef.current) recaptchaRef.current.reset();
       } else {
         console.log("Error condition triggered");
         setFormData({
