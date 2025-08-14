@@ -3,9 +3,9 @@ import { Container } from "../../components/Container";
 import Grid from "@mui/material/Grid";
 
 import img1 from "../../assets/images/exited/eth.svg";
-import img2 from "../../assets/images/exited/sss.png";
+import img2 from "../../assets/images/exited/sss-transparent.png";
 import img3 from "../../assets/images/exited/doge.svg";
-import img4 from "../../assets/images/exited/secuchip.png";
+import img4 from "../../assets/images/exited/secuchip-transparent.png";
 import img5 from "../../assets/images/exited/sys.svg";
 import img6 from "../../assets/images/exited/ambrosus.svg";
 import img7 from "../../assets/images/exited/pivateAILabs.svg";
