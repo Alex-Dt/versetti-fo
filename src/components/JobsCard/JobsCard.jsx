@@ -197,25 +197,27 @@ export const JobsCard = ({ job }) => {
           {job.content}
           <Stack flexDirection={"row"} gap={1} flexWrap={"wrap"} mt={3}>
             <FormDialog vacancy={job.title} />
-            <Button
-              variant={"contained"}
-              href="https://www.linkedin.com/company/versetti/jobs/"
-              target="_blank"
-              startIcon={<LinkedIn />}
-              sx={{
-                alignItems: "center",
-                color: "#010101",
-                fontSize: "22px",
-                svg: {
-                  fontSize: "32px!important",
-                },
-                p: 0.2,
-                px: 2,
-                backgroundColor: "#fff",
-              }}
-            >
-              <Typography variant="span">Easy Apply</Typography>
-            </Button>
+            {!!job?.linkedIn && (
+              <Button
+                variant={"contained"}
+                href={job.linkedIn}
+                target="_blank"
+                startIcon={<LinkedIn />}
+                sx={{
+                  alignItems: "center",
+                  color: "#010101",
+                  fontSize: "22px",
+                  svg: {
+                    fontSize: "32px!important",
+                  },
+                  p: 0.2,
+                  px: 2,
+                  backgroundColor: "#fff",
+                }}
+              >
+                <Typography variant="span">Easy Apply</Typography>
+              </Button>
+            )}
           </Stack>
         </Stack>
       </Collapse>
