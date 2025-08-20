@@ -1,3 +1,5 @@
+import { jobsData } from "../data/jobs";
+
 export const Menu = [
   {
     title: "Mission",
@@ -23,5 +25,10 @@ export const Menu = [
     title: "Contact",
     href: "#contact",
     id: "contact",
+  },
+  {
+    title: `Jobs (${jobsData?.length ?? 0})`,
+    href: "/jobs",
+    id: "jobs",
   },
 ];

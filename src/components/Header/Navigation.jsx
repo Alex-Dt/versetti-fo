@@ -1,12 +1,6 @@
-import {
-  Box,
-  Stack,
-  Link,
-  IconButton,
-  useMediaQuery,
-  Button,
-} from "@mui/material";
+import { Box, Stack, Link, IconButton, useMediaQuery, Button } from "@mui/material";
 import { Menu } from "../../constants/navigation";
+import { Link as LinkComponent } from "react-router-dom";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -51,7 +45,8 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
               return (
                 <Link
                   key={title}
-                  href={href}
+                  to={href}
+                  component={LinkComponent}
                   onClick={() => setIsOpen(false)}
                   sx={{
                     p: 2,
@@ -92,11 +87,7 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
                 size={"large"}
                 color="inherit"
               >
-                {isOpen ? (
-                  <CloseIcon fontSize={"large"} />
-                ) : (
-                  <MenuIcon fontSize={"large"} />
-                )}
+                {isOpen ? <CloseIcon fontSize={"large"} /> : <MenuIcon fontSize={"large"} />}
               </Button>
             </Stack>
           )}
