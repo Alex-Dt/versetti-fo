@@ -7,7 +7,7 @@ import { Fragment, useState } from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-export const FormDialog = () => {
+export const FormDialog = ({ vacancy }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -53,7 +53,7 @@ export const FormDialog = () => {
           <CloseIcon />
         </IconButton>
         <DialogContent>
-          <ContactForm type={"vacansy"} />
+          <ContactForm type={"vacancy"} vacancy={vacancy} />
         </DialogContent>
       </Dialog>
     </Fragment>

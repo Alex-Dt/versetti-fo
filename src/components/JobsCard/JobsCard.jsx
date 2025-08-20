@@ -196,7 +196,7 @@ export const JobsCard = ({ job }) => {
         >
           {job.content}
           <Stack flexDirection={"row"} gap={1} flexWrap={"wrap"} mt={3}>
-            <FormDialog />
+            <FormDialog vacancy={job.title} />
             <Button
               variant={"contained"}
               href="https://www.linkedin.com/company/versetti/jobs/"
