@@ -14,15 +14,19 @@ export const JobsCard = ({ job }) => {
   return (
     <Card
       sx={{
-        // padding: "46px",
         borderRadius: "30px",
         position: "relative",
-        background: "#519CCE0F",
+        background: "transparent",
       }}
     >
       <Stack
+        className="card"
         onClick={handleToggleClick}
         sx={{
+          background: "#519CCE0F",
+          "&:hover": {
+            background: "#519cce16",
+          },
           cursor: "pointer",
           padding: {
             xs: "26px",
@@ -160,6 +164,7 @@ export const JobsCard = ({ job }) => {
         />
         <Stack
           sx={{
+            background: "#519CCE0F",
             padding: {
               xs: "26px",
               sm: "46px",
