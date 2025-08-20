@@ -52,7 +52,7 @@ export const ContactForm = ({ type, vacancy }) => {
         name: formData.name,
         email: formData.email,
         message: formData.message.slice(0, 1000),
-        ...(vacancy && { vacancy }),
+        ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
       });
 
       console.log("Request body:", requestBody);
