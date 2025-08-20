@@ -157,7 +157,7 @@ export const ContactForm = ({ type, vacancy }) => {
             disabled
             onChange={handleChange}
             value={vacancy}
-            label="vacancy"
+            label="Vacancy"
             slotProps={{
               input: {
                 disableUnderline: true,
