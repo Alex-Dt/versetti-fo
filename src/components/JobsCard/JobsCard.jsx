@@ -1,6 +1,7 @@
 import { Button, Card, Chip, Collapse, Divider, Stack, Typography } from "@mui/material";
 import { Arrow } from "../../assets/images/jobs/Arrow";
 import { useState } from "react";
+import { LinkedIn } from "@mui/icons-material";
 
 export const JobsCard = ({ job }) => {
   const [expanded, setExpanded] = useState(false);
@@ -193,6 +194,43 @@ export const JobsCard = ({ job }) => {
           }}
         >
           {job.content}
+          <Stack flexDirection={"row"} gap={1} flexWrap={"wrap"} mt={3}>
+            <Button
+              variant={"contained"}
+              sx={{
+                alignItems: "center",
+                color: "#010101",
+                fontSize: "22px",
+                svg: {
+                  fontSize: "32px!important",
+                },
+                p: 0.2,
+                px: 2,
+                backgroundColor: "#fff",
+              }}
+            >
+              Apply
+            </Button>
+            <Button
+              variant={"contained"}
+              href="https://www.linkedin.com/company/versetti/jobs/"
+              target="_blank"
+              startIcon={<LinkedIn />}
+              sx={{
+                alignItems: "center",
+                color: "#010101",
+                fontSize: "22px",
+                svg: {
+                  fontSize: "32px!important",
+                },
+                p: 0.2,
+                px: 2,
+                backgroundColor: "#fff",
+              }}
+            >
+              <Typography variant="span">Easy Apply</Typography>
+            </Button>
+          </Stack>
         </Stack>
       </Collapse>
     </Card>
