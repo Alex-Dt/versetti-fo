@@ -3,13 +3,14 @@ import { useRef, useState } from "react";
 import { CONFIG } from "../../constants/config";
 import ReCAPTCHA from "react-google-recaptcha";
 
-export const ContactForm = () => {
+export const ContactForm = ({ type, vacancy }) => {
   const [isSending, setSendFlag] = useState(false);
   const [isSuccess, setSuccess] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    resumeLink: "",
     error: null,
   });
   const recaptchaRef = useRef(null);
@@ -44,12 +45,14 @@ export const ContactForm = () => {
         name: formData.name,
         email: formData.email,
         message: formData.message.slice(0, 1000),
+        ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
       });
 
       const requestBody = JSON.stringify({
         name: formData.name,
         email: formData.email,
         message: formData.message.slice(0, 1000),
+        ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
       });
 
       console.log("Request body:", requestBody);
@@ -146,6 +149,27 @@ export const ContactForm = () => {
             variant="filled"
           />
         </Stack>
+        {type === "vacancy" && (
+          <TextField
+            id="vacancy"
+            name="vacancy"
+            required
+            disabled
+            onChange={handleChange}
+            value={vacancy}
+            label="Vacancy"
+            slotProps={{
+              input: {
+                disableUnderline: true,
+              },
+            }}
+            sx={{
+              borderRadius: "30px",
+              flex: 1,
+            }}
+            variant="filled"
+          />
+        )}
         <TextField
           label="Message"
           name="message"
@@ -165,11 +189,31 @@ export const ContactForm = () => {
             borderRadius: "30px",
             flex: 1,
           }}
-          rows={10}
+          rows={type === "vacancy" ? 6 : 10}
           fullWidth
           variant="filled"
           placeholder="Limit to 1000 characters"
         />
+        {type === "vacancy" && (
+          <TextField
+            id="resumeLink"
+            name="resumeLink"
+            onChange={handleChange}
+            value={formData.resumeLink}
+            label="Resume link"
+            // placeholder="Example: https://versetti.co/"
+            slotProps={{
+              input: {
+                disableUnderline: true,
+              },
+            }}
+            sx={{
+              borderRadius: "30px",
+              flex: 1,
+            }}
+            variant="filled"
+          />
+        )}
         <Stack sx={{ flexDirection: "row", justifyContent: "center", mb: 1 }}>
           <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.VITE_GOOGLE_SITE_KEY} theme="dark" />
         </Stack>
