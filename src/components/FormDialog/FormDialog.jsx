@@ -38,7 +38,7 @@ export const FormDialog = ({ vacancy }) => {
         Apply
       </Button>
       <Dialog open={open} maxWidth={1000} onClose={handleClose}>
-        <DialogTitle>Apply</DialogTitle>
+        <DialogTitle>Vacancy Form</DialogTitle>
         <IconButton
           edge="start"
           color="inherit"
