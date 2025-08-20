@@ -2,6 +2,7 @@ import { Button, Card, Chip, Collapse, Divider, Stack, Typography } from "@mui/m
 import { Arrow } from "../../assets/images/jobs/Arrow";
 import { useState } from "react";
 import { LinkedIn } from "@mui/icons-material";
+import { FormDialog } from "../FormDialog";
 
 export const JobsCard = ({ job }) => {
   const [expanded, setExpanded] = useState(false);
@@ -195,22 +196,7 @@ export const JobsCard = ({ job }) => {
         >
           {job.content}
           <Stack flexDirection={"row"} gap={1} flexWrap={"wrap"} mt={3}>
-            <Button
-              variant={"contained"}
-              sx={{
-                alignItems: "center",
-                color: "#010101",
-                fontSize: "22px",
-                svg: {
-                  fontSize: "32px!important",
-                },
-                p: 0.2,
-                px: 2,
-                backgroundColor: "#fff",
-              }}
-            >
-              Apply
-            </Button>
+            <FormDialog />
             <Button
               variant={"contained"}
               href="https://www.linkedin.com/company/versetti/jobs/"
