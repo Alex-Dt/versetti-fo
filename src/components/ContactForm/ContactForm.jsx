@@ -201,7 +201,7 @@ export const ContactForm = ({ type, vacancy }) => {
             onChange={handleChange}
             value={formData.resumeLink}
             label="Resume link"
-            placeholder="Example: https://versetti.co/"
+            // placeholder="Example: https://versetti.co/"
             slotProps={{
               input: {
                 disableUnderline: true,
