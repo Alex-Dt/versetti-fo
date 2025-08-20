@@ -1,4 +1,4 @@
-import { Button, Card, Chip, Collapse, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Chip, Collapse, Divider, Stack, Typography } from "@mui/material";
 import { Arrow } from "../../assets/images/jobs/Arrow";
 import { useState } from "react";
 import { LinkedIn } from "@mui/icons-material";
@@ -21,7 +21,9 @@ export const JobsCard = ({ job }) => {
       }}
     >
       <Stack
+        onClick={handleToggleClick}
         sx={{
+          cursor: "pointer",
           padding: {
             xs: "26px",
             sm: "46px",
@@ -56,9 +58,7 @@ export const JobsCard = ({ job }) => {
             }}
           >
             <Typography
-              onClick={handleToggleClick}
               sx={{
-                cursor: "pointer",
                 fontSize: {
                   xs: "26px",
                   sm: "31px",
@@ -80,6 +80,7 @@ export const JobsCard = ({ job }) => {
                 minWidth: 0,
                 padding: 1,
                 color: "#fff",
+                pointerEvents: "none",
               }}
               onClick={handleToggleClick}
             >
@@ -137,6 +138,7 @@ export const JobsCard = ({ job }) => {
               minWidth: 0,
               padding: 1,
               color: "#fff",
+              pointerEvents: "none",
             }}
             onClick={handleToggleClick}
           >
