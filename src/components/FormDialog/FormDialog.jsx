@@ -37,7 +37,17 @@ export const FormDialog = ({ vacancy }) => {
       >
         Apply
       </Button>
-      <Dialog open={open} maxWidth={1000} onClose={handleClose}>
+      <Dialog
+        open={open}
+        maxWidth={1000}
+        disableEnforceFocus
+        sx={{
+          "& *": {
+            backgroundImage: "none!important",
+          },
+        }}
+        onClose={handleClose}
+      >
         <DialogTitle>Vacancy Form</DialogTitle>
         <IconButton
           edge="start"

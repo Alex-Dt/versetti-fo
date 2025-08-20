@@ -119,14 +119,25 @@ export const ContactForm = ({ type, vacancy }) => {
             onChange={handleChange}
             required
             value={formData.email}
-            slotProps={{
-              input: {
-                disableUnderline: true,
-              },
-            }}
             sx={{
               borderRadius: "30px",
               flex: 1,
+            }}
+            slotProps={{
+              input: {
+                disableUnderline: true,
+                sx:
+                  type === "vacancy" &&
+                  {
+                    // border: "2px solid #ffffff1f",
+                    // borderRadius: "15px!important",
+                  },
+              },
+              root: {
+                // sx: {
+                //   border: "1px solid #fff",
+                // },
+              },
             }}
             variant="filled"
           />
@@ -140,6 +151,12 @@ export const ContactForm = ({ type, vacancy }) => {
             slotProps={{
               input: {
                 disableUnderline: true,
+                sx:
+                  type === "vacancy" &&
+                  {
+                    // border: "2px solid #ffffff1f",
+                    // borderRadius: "15px!important",
+                  },
               },
             }}
             sx={{
@@ -161,6 +178,12 @@ export const ContactForm = ({ type, vacancy }) => {
             slotProps={{
               input: {
                 disableUnderline: true,
+                sx:
+                  type === "vacancy" &&
+                  {
+                    // border: "2px solid #ffffff1f",
+                    // borderRadius: "15px!important",
+                  },
               },
             }}
             sx={{
@@ -180,6 +203,12 @@ export const ContactForm = ({ type, vacancy }) => {
           slotProps={{
             input: {
               disableUnderline: true,
+              sx:
+                type === "vacancy" &&
+                {
+                  // border: "2px solid #ffffff1f",
+                  // borderRadius: "15px!important",
+                },
             },
             htmlInput: {
               maxLength: 1000,
@@ -205,6 +234,12 @@ export const ContactForm = ({ type, vacancy }) => {
             slotProps={{
               input: {
                 disableUnderline: true,
+                sx:
+                  type === "vacancy" &&
+                  {
+                    // border: "2px solid #ffffff1f",
+                    // borderRadius: "15px!important",
+                  },
               },
             }}
             sx={{
