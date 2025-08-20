@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { JobsCard } from "../../components/JobsCard";
 import { jobsData } from "../../data/jobs";
-import { Bag } from "../../assets/images/jobs/Bag";
+import { Bag } from "../../assets/images/jobs/BagIcon";
 
 export const Jobs = () => {
   return (
