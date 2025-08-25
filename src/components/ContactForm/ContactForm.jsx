@@ -11,28 +11,80 @@ export const ContactForm = ({ type, vacancy }) => {
     email: "",
     message: "",
     resumeLink: "",
-    error: null,
+    error: {
+      formError: null,
+    },
   });
   const recaptchaRef = useRef(null);
 
-  const handleChange = (e) => {
+  const handleChange = ({ e, maxLength }) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (!!value && value.length > maxLength) {
+      setFormData({
+        ...formData,
+        [name]: value,
+        error: {
+          ...formData.error,
+          [name]: `${String(name).charAt(0).toUpperCase()}${String(name).slice(1)} value max length is larger then ${maxLength}`,
+        },
+      });
+    } else {
+      if (!!formData.error?.[name]) {
+        delete formData.error[name];
+      }
+      setFormData({
+        ...formData,
+        [name]: value,
+        error: formData.error,
+      });
+    }
   };
+
+  const errorArray = Object.keys(formData.error);
+
+  const clearArr = errorArray.filter((key) => key !== "formError");
+
+  const submitDisable = clearArr.length > 0;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSendFlag(true);
     setSuccess(null);
-    setFormData({ ...formData, error: null });
+    setFormData((prev) => {
+      return { ...formData, error: { ...prev.error, formError: null } };
+    });
+
+    if (submitDisable) {
+      setFormData((prev) => {
+        return { ...formData, error: { ...prev.error, formError: "Please fill all fields correctly." } };
+      });
+      setSendFlag(false);
+      return;
+    }
 
     if (CONFIG.GOOGLE_SITE_KEY) {
       const recaptchaValue = recaptchaRef.current.getValue();
       if (!recaptchaValue) {
-        setFormData({ ...formData, error: "Please complete the reCAPTCHA verification." });
+        setFormData((prev) => {
+          return { ...formData, error: { ...prev.error, formError: "Please complete the reCAPTCHA verification." } };
+        });
         setSendFlag(false);
         return;
       }
+    }
+
+    if (vacancy && formData.resumeLink.trim() === "") {
+      setSendFlag(false);
+      setFormData((prev) => {
+        return {
+          ...formData,
+          error: {
+            ...prev.error,
+            formError: "Please complete resume link field",
+          },
+        };
+      });
+      return;
     }
 
     try {
@@ -76,13 +128,13 @@ export const ContactForm = ({ type, vacancy }) => {
 
       if (response.ok && response.status === 200) {
         setSuccess("Thank you! Your message was sent!");
-        setFormData({ name: "", email: "", message: "", error: null });
+        setFormData({ name: "", email: "", message: "", error: { formError: null } });
         if (recaptchaRef.current) recaptchaRef.current.reset();
       } else {
         console.log("Error condition triggered");
-        setFormData({
-          ...formData,
-          error: result.error || "Something went wrong! Please try again.",
+
+        setFormData((prev) => {
+          return { ...formData, error: { ...prev.error, formError: result.error || "Something went wrong! Please try again." } };
         });
       }
 
@@ -101,7 +153,18 @@ export const ContactForm = ({ type, vacancy }) => {
     <Box component={"form"} onSubmit={handleSubmit}>
       <Stack gap={2}>
         {isSuccess && <Stack sx={{ color: "success.main" }}>{isSuccess}</Stack>}
-        {formData.error && <Stack sx={{ color: "error.main" }}>{formData.error}</Stack>}
+        {/* {formData.error && <Stack sx={{ color: "error.main" }}>{formData.error}</Stack>} */}
+        {errorArray.length > 0 && (
+          <Stack>
+            {errorArray
+              .filter((error) => typeof formData.error[error] === "string" && formData.error[error].trim() !== "")
+              .map((errorKey) => (
+                <Stack sx={{ color: "error.main", listStyleType: "disc", display: "list-item", listStylePosition: "inside" }} key={errorKey}>
+                  {formData.error[errorKey]}
+                </Stack>
+              ))}
+          </Stack>
+        )}
         <Stack
           sx={{
             flexDirection: {
@@ -116,7 +179,7 @@ export const ContactForm = ({ type, vacancy }) => {
             name="email"
             type="email"
             label="Email"
-            onChange={handleChange}
+            onChange={(e) => handleChange({ e, maxLength: 100 })}
             required
             value={formData.email}
             sx={{
@@ -144,8 +207,8 @@ export const ContactForm = ({ type, vacancy }) => {
           <TextField
             id="name"
             name="name"
+            onChange={(e) => handleChange({ e, maxLength: 100 })}
             required
-            onChange={handleChange}
             value={formData.name}
             label="Name"
             slotProps={{
@@ -172,7 +235,7 @@ export const ContactForm = ({ type, vacancy }) => {
             name="vacancy"
             required
             disabled
-            onChange={handleChange}
+            onChange={(e) => handleChange({ e, maxLength: 100 })}
             value={vacancy}
             label="Vacancy"
             slotProps={{
@@ -197,7 +260,7 @@ export const ContactForm = ({ type, vacancy }) => {
           label="Message"
           name="message"
           required
-          onChange={handleChange}
+          onChange={(e) => handleChange({ e, maxLength: 1000 })}
           value={formData.message}
           multiline
           slotProps={{
@@ -226,10 +289,11 @@ export const ContactForm = ({ type, vacancy }) => {
         {type === "vacancy" && (
           <TextField
             id="resumeLink"
+            // required
             name="resumeLink"
-            onChange={handleChange}
+            onChange={(e) => handleChange({ e, maxLength: 100 })}
             value={formData.resumeLink}
-            label="Resume link"
+            label="Resume PDF link"
             // placeholder="Example: https://versetti.co/"
             slotProps={{
               input: {
@@ -253,7 +317,7 @@ export const ContactForm = ({ type, vacancy }) => {
           <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.GOOGLE_SITE_KEY} theme="dark" />
         </Stack>
         <Stack>
-          <Button type={"submit"} variant={"contained"} size={"large"} loading={isSending} sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}>
+          <Button type={"submit"} disabled={submitDisable} variant={"contained"} size={"large"} loading={isSending} sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}>
             SUBMIT
           </Button>
         </Stack>
