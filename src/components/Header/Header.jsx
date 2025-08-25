@@ -93,7 +93,7 @@ export const Header = () => {
         {!isDesktop && (
           <Stack
             sx={{
-              height: isOpen ? "calc(100svh - 71px)" : 0,
+              height: isOpen ? "calc(100vh - 71px)" : 0,
               justifyContent: "center",
             }}
           >
