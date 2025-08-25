@@ -258,10 +258,6 @@ export const JobsCard = ({ job }) => {
                   },
                   p: 0.2,
                   px: 2,
-                  "&:hover": {
-                    borderColor: "#519CCE",
-                    backgroundColor: "#519CCE0F",
-                  },
                 }}
               >
                 <Typography variant="span">View Details</Typography>
