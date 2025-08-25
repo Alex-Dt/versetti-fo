@@ -50,7 +50,7 @@ export const Hero = () => {
               xs: "contain",
               md: "cover",
             },
-            objectPosition: "0 100px",
+            objectPosition: { sm: "0 100px" },
             zIndex: -10,
           }}
         />
