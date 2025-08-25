@@ -171,6 +171,9 @@ export default function JobPage({ job }) {
                     p: 0.2,
                     px: 2,
                     backgroundColor: "#fff",
+                    "&:hover": {
+                      backgroundColor: "#ffffff95",
+                    },
                   }}
                 >
                   <Typography variant="span">Easy Apply</Typography>

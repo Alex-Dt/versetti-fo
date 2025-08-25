@@ -4,7 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { ContactForm } from "../ContactForm";
 import { Fragment, useState } from "react";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 export const FormDialog = ({ vacancy }) => {
@@ -21,8 +21,8 @@ export const FormDialog = ({ vacancy }) => {
   return (
     <Fragment>
       <Button
-        onClick={handleClickOpen}
         variant={"contained"}
+        onClick={handleClickOpen}
         sx={{
           alignItems: "center",
           color: "#010101",
@@ -33,9 +33,14 @@ export const FormDialog = ({ vacancy }) => {
           p: 0.2,
           px: 2,
           backgroundColor: "#fff",
+          borderWidth: 1,
+
+          "&:hover": {
+            backgroundColor: "#ffffff95",
+          },
         }}
       >
-        Apply
+        <Typography variant="span">Apply</Typography>
       </Button>
       <Dialog
         open={open}
