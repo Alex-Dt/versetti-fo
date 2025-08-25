@@ -17,7 +17,7 @@ export const ContactForm = ({ type, vacancy }) => {
   });
   const recaptchaRef = useRef(null);
 
-  const handleChange = ({ e, maxLength }) => {
+  const handleChange = ({ e, maxLength, customName }) => {
     const { name, value } = e.target;
     if (!!value && value.length > maxLength) {
       setFormData({
@@ -25,7 +25,9 @@ export const ContactForm = ({ type, vacancy }) => {
         [name]: value,
         error: {
           ...formData.error,
-          [name]: `${String(name).charAt(0).toUpperCase()}${String(name).slice(1)} value max length is larger then ${maxLength}`,
+          [name]: `${String(customName ?? name)
+            .charAt(0)
+            .toUpperCase()}${String(customName ?? name).slice(1)} value exceeds the maximum length of ${maxLength}.`,
         },
       });
     } else {
@@ -291,7 +293,7 @@ export const ContactForm = ({ type, vacancy }) => {
             id="resumeLink"
             required
             name="resumeLink"
-            onChange={(e) => handleChange({ e, maxLength: 100 })}
+            onChange={(e) => handleChange({ e, maxLength: 100, customName: "Resume PDF link" })}
             value={formData.resumeLink}
             label="Resume PDF link"
             // placeholder="Example: https://versetti.co/"
