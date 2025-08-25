@@ -95,8 +95,15 @@ export default function JobPage({ job }) {
                 {job.title}
               </Typography>
 
+              <Typography
+                sx={{
+                  opacity: 0.5,
+                }}
+              >
+                <Typography variant="span">{job.location}</Typography>
+              </Typography>
+
               <Stack direction="row" gap={1} flexWrap="wrap">
-                <Chip label={job.location} variant="outlined" />
                 {job.types.map((type, index) => (
                   <Chip key={index} label={type} variant="outlined" />
                 ))}
