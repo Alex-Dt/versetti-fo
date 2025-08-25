@@ -289,7 +289,7 @@ export const ContactForm = ({ type, vacancy }) => {
         {type === "vacancy" && (
           <TextField
             id="resumeLink"
-            // required
+            required
             name="resumeLink"
             onChange={(e) => handleChange({ e, maxLength: 100 })}
             value={formData.resumeLink}
