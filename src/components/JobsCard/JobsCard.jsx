@@ -1,8 +1,9 @@
-import { Box, Button, Card, Chip, Collapse, Divider, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, Chip, Collapse, Divider, Stack, Typography, List, ListItem } from "@mui/material";
 import { Arrow } from "../../assets/images/jobs/Arrow";
 import { useState } from "react";
-import { LinkedIn } from "@mui/icons-material";
+import { LinkedIn, Visibility } from "@mui/icons-material";
 import { FormDialog } from "../FormDialog";
+import Link from "next/link";
 
 export const JobsCard = ({ job }) => {
   const [expanded, setExpanded] = useState(false);
@@ -201,8 +202,71 @@ export const JobsCard = ({ job }) => {
             },
           }}
         >
-          {job.content}
+          {job.content.shortDescription.map((section, index) => {
+            switch (section.type) {
+              case "heading":
+                return (
+                  <Typography key={index} variant="h3" sx={{ mb: 1, mt: index > 0 ? 3 : 0 }}>
+                    {section.text}
+                  </Typography>
+                );
+              case "paragraph":
+                return (
+                  <Typography key={index} sx={{ mb: 2 }}>
+                    {section.text}
+                  </Typography>
+                );
+              case "list":
+                return (
+                  <List key={index} sx={{ p: 0, mb: 2 }}>
+                    {section.items.map((item, itemIndex) => (
+                      <ListItem
+                        key={itemIndex}
+                        sx={{
+                          p: 0,
+                          mb: 1,
+                          listStyle: "disc",
+                          display: "list-item",
+                          listStylePosition: "inside",
+                          fontSize: {
+                            xs: "19px",
+                            sm: "22px",
+                          },
+                        }}
+                      >
+                        {item}
+                      </ListItem>
+                    ))}
+                  </List>
+                );
+              default:
+                return null;
+            }
+          })}
           <Stack flexDirection={"row"} gap={1} flexWrap={"wrap"} mt={3}>
+            <Link href={`/jobs/${job.slug}`} passHref legacyBehavior>
+              <Button
+                variant={"outlined"}
+                startIcon={<Visibility />}
+                sx={{
+                  alignItems: "center",
+                  color: "#fff",
+                  borderColor: "#fff",
+                  fontSize: "22px",
+                  svg: {
+                    fontSize: "32px!important",
+                  },
+                  p: 0.2,
+                  px: 2,
+                  "&:hover": {
+                    borderColor: "#519CCE",
+                    backgroundColor: "#519CCE0F",
+                  },
+                }}
+              >
+                <Typography variant="span">View Details</Typography>
+              </Button>
+            </Link>
             <FormDialog vacancy={job.title} />
             {!!job?.linkedIn && (
               <Button

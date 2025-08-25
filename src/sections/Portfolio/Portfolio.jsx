@@ -3,7 +3,7 @@ import { Card } from "../../components/Card";
 import { SolanaLogo } from "../../assets/images/portfolios/solanaLogo";
 import { SonicLogo } from "../../assets/images/portfolios/sonicLogo";
 
-import flower_blur from "../../assets/images/flower-blur.png";
+const flower_blur = "/assets/images/flower-blur.png";
 import { Menu } from "../../constants/navigation";
 
 const data = [

@@ -2,11 +2,11 @@ import { Box, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 
-import img1 from "../../assets/images/whatwedo/1.svg";
-import img2 from "../../assets/images/whatwedo/2.svg";
-import img3 from "../../assets/images/whatwedo/3.svg";
+const img1 = "/assets/images/whatwedo/1.svg";
+const img2 = "/assets/images/whatwedo/2.svg";
+const img3 = "/assets/images/whatwedo/3.svg";
 
-import flower_blur from "../../assets/images/flower-blur.png";
+const flower_blur = "/assets/images/flower-blur.png";
 import { Menu } from "../../constants/navigation";
 
 const data = [
