@@ -38,7 +38,13 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
   //   }, []);
   if (isMobile) {
     return (
-      <Stack>
+      <Stack
+        sx={{
+          scale: isOpen ? 1 : 0,
+          transition: "all 0.2s ease-out",
+          overflow: "auto",
+        }}
+      >
         <Box component="nav">
           <Stack direction="column">
             {Menu.map(({ title, href }) => {

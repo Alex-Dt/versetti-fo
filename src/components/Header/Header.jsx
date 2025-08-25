@@ -10,6 +10,14 @@ export const Header = () => {
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
+  const handleScrollEffect = () => {
+    if (isOpen && !isDesktop) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -18,6 +26,11 @@ export const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    handleScrollEffect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, isDesktop]);
 
   return (
     <Box
@@ -38,7 +51,11 @@ export const Header = () => {
           }),
       }}
     >
-      <Container>
+      <Container
+        sx={{
+          p: 0,
+        }}
+      >
         <Stack
           sx={{
             pt: isScrolled ? "10px" : isDesktop ? "57px" : "10px",
@@ -73,10 +90,13 @@ export const Header = () => {
           <Navigation {...{ isOpen, setIsOpen }} />
         </Stack>
         {!isDesktop && (
-          <Stack>
-            <Collapse in={isOpen} timeout="auto" unmountOnExit>
-              <Navigation {...{ isOpen, setIsOpen }} isMobile={true} />
-            </Collapse>
+          <Stack
+            sx={{
+              height: isOpen ? "calc(100svh - 71px)" : 0,
+              justifyContent: "center",
+            }}
+          >
+            <Navigation {...{ isOpen, setIsOpen }} isMobile={true} />
           </Stack>
         )}
       </Container>
