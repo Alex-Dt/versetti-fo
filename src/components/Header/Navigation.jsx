@@ -1,6 +1,6 @@
 import { Box, Stack, Link, IconButton, useMediaQuery, Button } from "@mui/material";
 import { Menu } from "../../constants/navigation";
-import { Link as LinkComponent } from "react-router-dom";
+import NextLink from "next/link";
 
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,30 +12,6 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
 
   const isDesktop = useMediaQuery("(min-width:600px)");
 
-  //   const [activeSection, setActiveSection] = useState("");
-
-  //   useEffect(() => {
-  //     const handleScroll = () => {
-  //       let currentSection = "";
-
-  //       menu.forEach(({ title }) => {
-  //         const section = document.getElementById(title.toLowerCase());
-  //         if (section) {
-  //           const rect = section.getBoundingClientRect();
-  //           if (rect.top <= 200 && rect.bottom >= 100) {
-  //             currentSection = title.toLowerCase();
-  //           }
-  //         }
-  //       });
-
-  //       setActiveSection(currentSection);
-  //     };
-
-  //     window.addEventListener("scroll", handleScroll);
-  //     handleScroll();
-
-  //     return () => window.removeEventListener("scroll", handleScroll);
-  //   }, []);
   if (isMobile) {
     return (
       <Stack
@@ -48,28 +24,47 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
         <Box component="nav">
           <Stack direction="column">
             {Menu.map(({ title, href }) => {
-              return (
-                <Link
-                  key={title}
-                  to={href}
-                  component={LinkComponent}
-                  onClick={() => setIsOpen(false)}
-                  sx={{
-                    p: 2,
-                    textAlign: "center",
-                    textTransform: "uppercase",
-                    fontWeight: 500,
-                    fontSize: "24px",
-                  }}
-                  color={
-                    "inherit"
-                    //   activeSection === title.toLowerCase() ? "red" : "inherit"
-                  }
-                  underline="none"
-                >
-                  {title}
-                </Link>
-              );
+              const isAnchorLink = href.startsWith("#");
+
+              if (isAnchorLink) {
+                return (
+                  <Link
+                    key={title}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    sx={{
+                      p: 2,
+                      textAlign: "center",
+                      textTransform: "uppercase",
+                      fontWeight: 500,
+                      fontSize: "24px",
+                    }}
+                    color={"inherit"}
+                    underline="none"
+                  >
+                    {title}
+                  </Link>
+                );
+              } else {
+                return (
+                  <NextLink key={title} href={href} passHref legacyBehavior>
+                    <Link
+                      onClick={() => setIsOpen(false)}
+                      sx={{
+                        p: 2,
+                        textAlign: "center",
+                        textTransform: "uppercase",
+                        fontWeight: 500,
+                        fontSize: "24px",
+                      }}
+                      color={"inherit"}
+                      underline="none"
+                    >
+                      {title}
+                    </Link>
+                  </NextLink>
+                );
+              }
             })}
           </Stack>
         </Box>
@@ -99,24 +94,42 @@ export const Navigation = ({ isOpen, setIsOpen, isMobile = false }) => {
           )}
           {isDesktop &&
             Menu.map(({ title, href }) => {
-              return (
-                <Link
-                  key={`desktop_menu_${title}`}
-                  href={href}
-                  sx={{
-                    p: 2,
-                    fontSize: "16px",
-                    textTransform: "uppercase",
-                  }}
-                  color={
-                    "inherit"
-                    //   activeSection === title.toLowerCase() ? "red" : "inherit"
-                  }
-                  underline="none"
-                >
-                  {title}
-                </Link>
-              );
+              // Check if it's an anchor link or a page link
+              const isAnchorLink = href.startsWith("#");
+
+              if (isAnchorLink) {
+                return (
+                  <Link
+                    key={`desktop_menu_${title}`}
+                    href={href}
+                    sx={{
+                      p: 2,
+                      fontSize: "16px",
+                      textTransform: "uppercase",
+                    }}
+                    color={"inherit"}
+                    underline="none"
+                  >
+                    {title}
+                  </Link>
+                );
+              } else {
+                return (
+                  <NextLink key={`desktop_menu_${title}`} href={href} passHref legacyBehavior>
+                    <Link
+                      sx={{
+                        p: 2,
+                        fontSize: "16px",
+                        textTransform: "uppercase",
+                      }}
+                      color={"inherit"}
+                      underline="none"
+                    >
+                      {title}
+                    </Link>
+                  </NextLink>
+                );
+              }
             })}
         </Stack>
       </Box>

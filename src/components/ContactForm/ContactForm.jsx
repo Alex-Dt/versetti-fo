@@ -26,7 +26,7 @@ export const ContactForm = ({ type, vacancy }) => {
     setSuccess(null);
     setFormData({ ...formData, error: null });
 
-    if (CONFIG.VITE_GOOGLE_SITE_KEY) {
+    if (CONFIG.GOOGLE_SITE_KEY) {
       const recaptchaValue = recaptchaRef.current.getValue();
       if (!recaptchaValue) {
         setFormData({ ...formData, error: "Please complete the reCAPTCHA verification." });
@@ -37,7 +37,7 @@ export const ContactForm = ({ type, vacancy }) => {
 
     try {
       // Use the AWS API Gateway endpoint
-      const apiEndpoint = CONFIG.VITE_API_ENDPOINT;
+      const apiEndpoint = CONFIG.API_ENDPOINT;
 
       // Debug logging
       console.log("API Endpoint:", apiEndpoint);
@@ -250,7 +250,7 @@ export const ContactForm = ({ type, vacancy }) => {
           />
         )}
         <Stack sx={{ flexDirection: "row", justifyContent: "center", mb: 1 }}>
-          <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.VITE_GOOGLE_SITE_KEY} theme="dark" />
+          <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.GOOGLE_SITE_KEY} theme="dark" />
         </Stack>
         <Stack>
           <Button type={"submit"} variant={"contained"} size={"large"} loading={isSending} sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}>

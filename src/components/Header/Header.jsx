@@ -54,6 +54,7 @@ export const Header = () => {
       <Container
         sx={{
           p: 0,
+          px: 1,
         }}
       >
         <Stack

@@ -3,22 +3,22 @@ import { jobsData } from "../data/jobs";
 export const Menu = [
   {
     title: "Mission",
-    href: "#mission",
+    href: "/#mission",
     id: "mission",
   },
   {
     title: "Activities",
-    href: "#activities",
+    href: "/#activities",
     id: "activities",
   },
   {
     title: "Founder",
-    href: "#founder",
+    href: "/#founder",
     id: "founder",
   },
   {
     title: "Portfolio",
-    href: "#portfolio",
+    href: "/#portfolio",
     id: "portfolio",
   },
   {

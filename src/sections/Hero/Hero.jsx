@@ -1,9 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
-import bgMobileImage from "../../assets/images/bg5.png";
 
 import { Container } from "../../components/Container";
-
-import style from "./style.module.css";
 
 export const Hero = () => {
   return (
@@ -33,7 +30,7 @@ export const Hero = () => {
       >
         <Box
           component="img"
-          src={bgMobileImage}
+          src="/assets/images/bg5.png"
           alt="bg"
           sx={{
             position: "relative",
@@ -117,7 +114,6 @@ export const Hero = () => {
             }}
           >
             <Typography
-              className={style.h1}
               variant="h1"
               sx={{
                 mb: {

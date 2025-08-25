@@ -2,16 +2,16 @@ import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "../../components/Container";
 import Grid from "@mui/material/Grid";
 
-import img1 from "../../assets/images/exited/eth.svg";
-import img2 from "../../assets/images/exited/sss-transparent.png";
-import img3 from "../../assets/images/exited/doge.svg";
-import img4 from "../../assets/images/exited/secuchip-transparent.png";
-import img5 from "../../assets/images/exited/sys.svg";
-import img6 from "../../assets/images/exited/ambrosus.svg";
-import img7 from "../../assets/images/exited/pivateAILabs.svg";
-import img8 from "../../assets/images/exited/numerai.svg";
-import img9 from "../../assets/images/exited/bat3.svg";
-import img10 from "../../assets/images/exited/bit.svg";
+const img1 = "/assets/images/exited/eth.svg";
+const img2 = "/assets/images/exited/sss-transparent.png";
+const img3 = "/assets/images/exited/doge.svg";
+const img4 = "/assets/images/exited/secuchip-transparent.png";
+const img5 = "/assets/images/exited/sys.svg";
+const img6 = "/assets/images/exited/ambrosus.svg";
+const img7 = "/assets/images/exited/pivateAILabs.svg";
+const img8 = "/assets/images/exited/numerai.svg";
+const img9 = "/assets/images/exited/bat3.svg";
+const img10 = "/assets/images/exited/bit.svg";
 
 const data = [
   {
