@@ -2,7 +2,7 @@ export const jobsData = [
   {
     title: "Chief Scientific Officer",
     slug: "chief-scientific-officer",
-    location: "Dubai, London, Moscow",
+    location: "Worldwide",
     types: ["Remote", "Full-time"],
     linkedIn: "https://www.linkedin.com/jobs/view/4284768400/",
 
@@ -50,7 +50,7 @@ export const jobsData = [
   {
     title: "Public Relations Manager",
     slug: "public-relations-manager",
-    location: "Dubai, London, Moscow",
+    location: "Worldwide",
     types: ["Remote", "Full-time"],
     linkedIn: "https://www.linkedin.com/jobs/view/4284767534/",
 
