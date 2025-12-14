@@ -1,5 +1,6 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { Card } from "../../components/Card";
+import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 const img1 = "/assets/images/verticals/1.svg";
 const img2 = "/assets/images/verticals/2.svg";
@@ -27,6 +28,8 @@ const data = [
 ];
 
 export const Verticals = () => {
+  const { ref: sectionRef, isVisible } = useScrollAnimation();
+  
   return (
     <Box
       component={"section"}
@@ -60,7 +63,8 @@ export const Verticals = () => {
           <img
             loading="lazy"
             src={flower_blur}
-            alt="robot"
+            alt=""
+            className="floating-flower-slow"
             style={{
               position: "absolute",
               pointerEvents: "none",
@@ -69,18 +73,24 @@ export const Verticals = () => {
               width: "30%",
               maxWidth: "219px",
               top: "140%",
-              transform: "translate(-0%,-50%) rotate(0deg)",
+              "--flower-rotate": "0deg",
             }}
           />
-          <Typography mb={"35px"} variant={"h2"}>
+          <Typography
+            mb={"35px"}
+            variant={"h2"}
+            sx={{ ...fadeInUp(isVisible, 0) }}
+          >
             Verticals
           </Typography>
           <Stack
+            ref={sectionRef}
             sx={{
               flexDirection: {
                 xs: "column",
                 sm: "row",
               },
+              ...fadeInUp(isVisible, 0.15),
             }}
             gap={2}
           >

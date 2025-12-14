@@ -33,3 +33,24 @@ section {
   padding-top: 100px;
   margin-top: -100px;
 }
+
+@keyframes floatFlower {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--flower-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-20px) rotate(calc(var(--flower-rotate, 0deg) + 5deg));
+  }
+}
+
+.floating-flower {
+  animation: floatFlower 6s ease-in-out infinite;
+}
+
+.floating-flower-slow {
+  animation: floatFlower 8s ease-in-out infinite;
+}
+
+.floating-flower-fast {
+  animation: floatFlower 4s ease-in-out infinite;
+}

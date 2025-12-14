@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import Link from "next/link";
+import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 const img1 = "/assets/images/whatwedo/1.svg";
 const img2 = "/assets/images/whatwedo/2.svg";
@@ -29,6 +30,8 @@ const data = [
 ];
 
 export const WhatWeDo = () => {
+  const { ref: sectionRef, isVisible } = useScrollAnimation();
+  
   return (
     <Box
       component={"section"}
@@ -50,7 +53,8 @@ export const WhatWeDo = () => {
           <img
             loading="lazy"
             src={flower_blur}
-            alt="robot"
+            alt=""
+            className="floating-flower"
             style={{
               position: "absolute",
               outline: "none",
@@ -60,14 +64,15 @@ export const WhatWeDo = () => {
               width: "40%",
               maxWidth: "495px",
               top: "-15%",
-              transform: "translate(-0%,-50%) rotate(-10deg)",
+              "--flower-rotate": "-10deg",
             }}
           />
 
           <img
             loading="lazy"
             src={flower_blur}
-            alt="robot"
+            alt=""
+            className="floating-flower-slow"
             style={{
               position: "absolute",
               outline: "none",
@@ -77,14 +82,15 @@ export const WhatWeDo = () => {
               width: "30%",
               maxWidth: "219px",
               top: "55%",
-              transform: "translate(-0%,-50%) rotate(-60deg)",
+              "--flower-rotate": "-60deg",
             }}
           />
 
           <img
             loading="lazy"
             src={flower_blur}
-            alt="robot"
+            alt=""
+            className="floating-flower-fast"
             style={{
               position: "absolute",
               outline: "none",
@@ -94,7 +100,7 @@ export const WhatWeDo = () => {
               width: "30%",
               maxWidth: "99px",
               top: "64%",
-              transform: "translate(-0%,-50%) rotate(30deg)",
+              "--flower-rotate": "30deg",
             }}
           />
           <Typography
@@ -103,12 +109,14 @@ export const WhatWeDo = () => {
                 xs: "20px",
                 sm: "61px",
               },
+              ...fadeInUp(isVisible, 0),
             }}
             variant={"h2"}
           >
             What we do
           </Typography>
           <Stack
+            ref={sectionRef}
             sx={{
               flexDirection: {
                 xs: "column",
@@ -118,6 +126,7 @@ export const WhatWeDo = () => {
                 xs: 10,
                 sm: "5.5%",
               },
+              ...fadeInUp(isVisible, 0.15),
             }}
           >
             {data.map((_data) => {
@@ -131,6 +140,8 @@ export const WhatWeDo = () => {
                 xs: 5,
                 sm: 7,
               },
+              position: "relative",
+              zIndex: 1,
             }}
           >
             <Button
