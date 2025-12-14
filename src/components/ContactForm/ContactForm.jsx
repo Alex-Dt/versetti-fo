@@ -315,9 +315,11 @@ export const ContactForm = ({ type, vacancy }) => {
             variant="filled"
           />
         )}
-        <Stack sx={{ flexDirection: "row", justifyContent: "center", mb: 1 }}>
-          <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.GOOGLE_SITE_KEY} theme="dark" />
-        </Stack>
+        {CONFIG.GOOGLE_SITE_KEY && (
+          <Stack sx={{ flexDirection: "row", justifyContent: "center", mb: 1 }}>
+            <ReCAPTCHA ref={recaptchaRef} sitekey={CONFIG.GOOGLE_SITE_KEY} theme="dark" />
+          </Stack>
+        )}
         <Stack>
           <Button type={"submit"} disabled={submitDisable} variant={"contained"} size={"large"} loading={isSending} sx={{ fontWeight: "700", borderRadius: "30px", background: "#fff" }}>
             SUBMIT

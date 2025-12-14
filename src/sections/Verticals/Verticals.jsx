@@ -12,14 +12,17 @@ const data = [
   {
     title: "Longevity",
     icon: img1,
+    href: "/priorities",
   },
   {
     title: "Artificial Intelligence",
     icon: img2,
+    href: "/priorities",
   },
   {
     title: "Web3",
     icon: img3,
+    href: "/priorities",
   },
 ];
 

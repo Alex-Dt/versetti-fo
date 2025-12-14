@@ -1,6 +1,7 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
+import Link from "next/link";
 
 const img1 = "/assets/images/whatwedo/1.svg";
 const img2 = "/assets/images/whatwedo/2.svg";
@@ -122,6 +123,40 @@ export const WhatWeDo = () => {
             {data.map((_data) => {
               return <Card key={_data.title} data={_data} />;
             })}
+          </Stack>
+          <Stack
+            sx={{
+              alignItems: "center",
+              mt: {
+                xs: 5,
+                sm: 7,
+              },
+            }}
+          >
+            <Button
+              component={Link}
+              href="/priorities"
+              variant="outlined"
+              size="large"
+              sx={{
+                borderRadius: "30px",
+                borderColor: "rgba(255, 255, 255, 0.5)",
+                color: "#fff",
+                px: 4,
+                py: 1.5,
+                fontWeight: 600,
+                fontSize: "16px",
+                textTransform: "none",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                "&:hover": {
+                  borderColor: "#fff",
+                  background: "rgba(255, 255, 255, 0.1)",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              View Priorities
+            </Button>
           </Stack>
         </Stack>
       </Container>
