@@ -2,6 +2,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import Link from "next/link";
+import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 const img1 = "/assets/images/whatwedo/1.svg";
 const img2 = "/assets/images/whatwedo/2.svg";
@@ -29,6 +30,8 @@ const data = [
 ];
 
 export const WhatWeDo = () => {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <Box
       component={"section"}
@@ -106,12 +109,14 @@ export const WhatWeDo = () => {
                 xs: "20px",
                 sm: "61px",
               },
+              ...fadeInUp(isVisible, 0),
             }}
             variant={"h2"}
           >
             What we do
           </Typography>
           <Stack
+            ref={sectionRef}
             sx={{
               flexDirection: {
                 xs: "column",
@@ -121,6 +126,7 @@ export const WhatWeDo = () => {
                 xs: 10,
                 sm: "5.5%",
               },
+              ...fadeInUp(isVisible, 0.15),
             }}
           >
             {data.map((_data) => {

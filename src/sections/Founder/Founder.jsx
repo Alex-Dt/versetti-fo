@@ -1,13 +1,16 @@
 import { Box, Link, Stack, Typography } from "@mui/material";
 import { Container } from "../../components/Container";
 import { Menu } from "../../constants/navigation";
+import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 export const Founder = () => {
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <Box component={"section"} id={Menu[2].id}>
       <Container>
-        <Stack mb={"125px"} gap={4}>
-          <Typography variant={"h2"}>Founder</Typography>
+        <Stack ref={sectionRef} mb={"125px"} gap={4}>
+          <Typography variant={"h2"} sx={{ ...fadeInUp(isVisible, 0) }}>Founder</Typography>
           <Stack>
             <Typography textAlign={"justify"}>
               <Link

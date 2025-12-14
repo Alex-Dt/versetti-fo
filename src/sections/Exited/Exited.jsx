@@ -1,6 +1,7 @@
 import { Box, Stack, Typography, useMediaQuery } from "@mui/material";
 import { Container } from "../../components/Container";
 import Grid from "@mui/material/Grid";
+import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 const img1 = "/assets/images/exited/eth.svg";
 const img2 = "/assets/images/exited/sss-transparent.png";
@@ -69,10 +70,13 @@ const data = [
 
 export const Exited = () => {
   const isDesktop = useMediaQuery("(min-width:600px)");
+  const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <Box component={"section"} id="exited">
       <Container>
         <Stack
+          ref={sectionRef}
           sx={{
             mb: {
               xs: "54px",
@@ -80,10 +84,10 @@ export const Exited = () => {
             },
           }}
         >
-          <Typography variant={"h2"} mb={"8px"}>
+          <Typography variant={"h2"} mb={"8px"} sx={{ ...fadeInUp(isVisible, 0) }}>
             Exited
           </Typography>
-          <Box overflow={"hidden"}>
+          <Box overflow={"hidden"} sx={{ ...fadeInUp(isVisible, 0.15) }}>
             <Grid container spacing={0} m={"-1px"}>
               {data.map((_data) => {
                 return (

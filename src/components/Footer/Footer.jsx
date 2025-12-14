@@ -187,7 +187,7 @@ export const Footer = () => {
                 >
                   <Stack direction="row" alignItems="center" gap={1}>
                     <Typography sx={{ fontWeight: 600, fontSize: "18px" }}>
-                      📋 View Our Investment Priorities
+                      View Our Investment Priorities
                     </Typography>
                     {hasPrioritiesRead && (
                       <CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} />
