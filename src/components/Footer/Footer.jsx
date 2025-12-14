@@ -1,6 +1,10 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { useState, useRef, useCallback } from "react";
+import { Box, Button, Stack, Typography, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Container } from "../Container";
 import { ContactForm } from "../ContactForm";
+import { PrioritiesContent } from "../PrioritiesContent";
 import { TwitterXIcon } from "../../assets/socials/twitterXIcon";
 import { LinkedInIcon } from "../../assets/socials/linkedInIcon";
 
@@ -18,6 +22,47 @@ const socials = [
 ];
 
 export const Footer = () => {
+  const [isAccordionExpanded, setIsAccordionExpanded] = useState(false);
+  const [hasScrolledToBottom, setHasScrolledToBottom] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
+  const [isShaking, setIsShaking] = useState(false);
+  const accordionRef = useRef(null);
+  const scrollContainerRef = useRef(null);
+
+  const hasPrioritiesRead = isAccordionExpanded && hasScrolledToBottom;
+
+  const handleAccordionChange = (event, expanded) => {
+    setIsAccordionExpanded(expanded);
+    if (expanded) {
+      setShowWarning(false);
+    }
+  };
+
+  const handleScroll = useCallback((e) => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 20;
+    if (isAtBottom && !hasScrolledToBottom) {
+      setHasScrolledToBottom(true);
+    }
+  }, [hasScrolledToBottom]);
+
+  const triggerWarning = useCallback(() => {
+    setShowWarning(true);
+    setIsShaking(true);
+    
+    if (!isAccordionExpanded) {
+      setIsAccordionExpanded(true);
+    }
+    
+    setTimeout(() => {
+      accordionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+    
+    setTimeout(() => {
+      setIsShaking(false);
+    }, 600);
+  }, [isAccordionExpanded]);
+
   return (
     <Box component={"footer"} id="contact" bgcolor={"#171521"}>
       <Container>
@@ -36,13 +81,13 @@ export const Footer = () => {
               sm: "151px",
             },
           }}
-          gap={2}
+          gap={4}
         >
-          <Stack flex={1}>
+          <Stack sx={{ flex: { xs: 1, sm: "0 0 30%" } }}>
             <Stack
               sx={{
                 maxWidth: {
-                  sm: "428px",
+                  sm: "100%",
                   xs: "100%",
                 },
                 flex: 1,
@@ -112,8 +157,107 @@ export const Footer = () => {
               </Typography>
             </Stack>
           </Stack>
-          <Stack flex={1}>
-            <ContactForm />
+          <Stack sx={{ flex: { xs: 1, sm: "0 0 70%" } }} gap={3}>
+            <Box
+              ref={accordionRef}
+              className={isShaking ? "shake-animation" : ""}
+            >
+              <Accordion
+                expanded={isAccordionExpanded}
+                onChange={handleAccordionChange}
+                sx={{
+                  background: "rgba(28, 26, 42, 0.8)",
+                  borderRadius: "16px !important",
+                  border: showWarning ? "2px solid #f44336" : "1px solid rgba(255, 255, 255, 0.1)",
+                  transition: "border-color 0.3s ease",
+                  "&:before": { display: "none" },
+                  "&.Mui-expanded": {
+                    margin: 0,
+                  },
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon sx={{ color: "#fff" }} />}
+                  sx={{
+                    borderRadius: "16px",
+                    "&:hover": {
+                      background: "rgba(255, 255, 255, 0.05)",
+                    },
+                  }}
+                >
+                  <Stack direction="row" alignItems="center" gap={1}>
+                    <Typography sx={{ fontWeight: 600, fontSize: "18px" }}>
+                      📋 View Our Investment Priorities
+                    </Typography>
+                    {hasPrioritiesRead && (
+                      <CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} />
+                    )}
+                  </Stack>
+                </AccordionSummary>
+                <AccordionDetails
+                  ref={scrollContainerRef}
+                  onScroll={handleScroll}
+                  sx={{
+                    maxHeight: "400px",
+                    overflowY: "auto",
+                    borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                    "&::-webkit-scrollbar": {
+                      width: "6px",
+                    },
+                    "&::-webkit-scrollbar-track": {
+                      background: "rgba(255, 255, 255, 0.05)",
+                      borderRadius: "3px",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      background: "rgba(255, 255, 255, 0.2)",
+                      borderRadius: "3px",
+                    },
+                  }}
+                >
+                  <PrioritiesContent />
+                  {isAccordionExpanded && !hasScrolledToBottom && (
+                    <Typography
+                      sx={{
+                        textAlign: "center",
+                        color: "#FFC107",
+                        fontSize: "16px",
+                        mt: 2,
+                        pb: 1,
+                      }}
+                    >
+                      ↓ Please scroll down to read all priorities ↓
+                    </Typography>
+                  )}
+                </AccordionDetails>
+              </Accordion>
+              {showWarning && (
+                <Typography
+                  sx={{
+                    color: "#f44336",
+                    fontSize: "16px",
+                    mt: 1,
+                    fontWeight: 500,
+                  }}
+                >
+                  ⚠️ Please read our investment priorities before submitting. Open the section above and scroll to the bottom.
+                </Typography>
+              )}
+            </Box>
+            <Typography
+              sx={{
+                fontSize: "16px",
+                opacity: 0.7,
+                color: hasPrioritiesRead ? "#4CAF50" : "#FFC107",
+              }}
+            >
+              {hasPrioritiesRead
+                ? "✓ You have reviewed our investment priorities"
+                : "⚠️ Please open and read our investment priorities before submitting"}
+            </Typography>
+            <ContactForm
+              prioritiesRead={hasPrioritiesRead}
+              onPrioritiesWarning={triggerWarning}
+            />
           </Stack>
           <Stack>
             <Typography

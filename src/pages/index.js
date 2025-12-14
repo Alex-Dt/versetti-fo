@@ -8,11 +8,8 @@ import { Container } from "../components/Container";
 import { Box, Link, Stack, Typography } from "@mui/material";
 import { Menu } from "../constants/navigation";
 import { Founder } from "../sections/Founder";
-import { useScrollAnimation, fadeInUp } from "../hooks/useScrollAnimation";
 
 export default function HomePage() {
-  const { ref: introRef, isVisible: introVisible } = useScrollAnimation();
-  
   return (
     <>
       <Head>
@@ -43,7 +40,6 @@ export default function HomePage() {
       <Box comonent="section" id={Menu[0].id}>
         <Container>
           <Stack
-            ref={introRef}
             gap={3}
             sx={{
               maxWidth: 1200,
@@ -59,7 +55,6 @@ export default function HomePage() {
                 xs: "56px",
                 sm: "86px",
               },
-              ...fadeInUp(introVisible, 0),
             }}
           >
             <Typography fontSize={22}>

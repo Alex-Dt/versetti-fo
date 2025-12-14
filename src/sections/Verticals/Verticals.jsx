@@ -1,6 +1,5 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { Card } from "../../components/Card";
-import { useScrollAnimation, fadeInUp } from "../../hooks/useScrollAnimation";
 
 const img1 = "/assets/images/verticals/1.svg";
 const img2 = "/assets/images/verticals/2.svg";
@@ -18,18 +17,14 @@ const data = [
   {
     title: "Artificial Intelligence",
     icon: img2,
-    href: "/priorities",
   },
   {
     title: "Web3",
     icon: img3,
-    href: "/priorities",
   },
 ];
 
 export const Verticals = () => {
-  const { ref: sectionRef, isVisible } = useScrollAnimation();
-  
   return (
     <Box
       component={"section"}
@@ -76,21 +71,15 @@ export const Verticals = () => {
               "--flower-rotate": "0deg",
             }}
           />
-          <Typography
-            mb={"35px"}
-            variant={"h2"}
-            sx={{ ...fadeInUp(isVisible, 0) }}
-          >
+          <Typography mb={"35px"} variant={"h2"}>
             Verticals
           </Typography>
           <Stack
-            ref={sectionRef}
             sx={{
               flexDirection: {
                 xs: "column",
                 sm: "row",
               },
-              ...fadeInUp(isVisible, 0.15),
             }}
             gap={2}
           >

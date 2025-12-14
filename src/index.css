@@ -39,7 +39,7 @@ section {
     transform: translateY(0) rotate(var(--flower-rotate, 0deg));
   }
   50% {
-    transform: translateY(-20px) rotate(calc(var(--flower-rotate, 0deg) + 5deg));
+    transform: translateY(-20px) rotate(calc(var(--flower-rotate, 0deg) + 6deg));
   }
 }
 
@@ -53,4 +53,14 @@ section {
 
 .floating-flower-fast {
   animation: floatFlower 4s ease-in-out infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.shake-animation {
+  animation: shake 0.6s ease-in-out;
 }
