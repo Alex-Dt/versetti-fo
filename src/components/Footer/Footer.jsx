@@ -187,7 +187,7 @@ export const Footer = () => {
                 >
                   <Stack direction="row" alignItems="center" gap={1}>
                     <Typography sx={{ fontWeight: 600, fontSize: "18px" }}>
-                      View Our Investment Priorities
+                      View Our Priorities
                     </Typography>
                     {hasPrioritiesRead && (
                       <CheckCircleIcon sx={{ color: "#4CAF50", fontSize: 20 }} />
@@ -239,7 +239,7 @@ export const Footer = () => {
                     fontWeight: 500,
                   }}
                 >
-                  ⚠️ Please read our investment priorities before submitting. Open the section above and scroll to the bottom.
+                  ⚠️ Please read our priorities before submitting. Open the section above and scroll to the bottom.
                 </Typography>
               )}
             </Box>
@@ -251,8 +251,8 @@ export const Footer = () => {
               }}
             >
               {hasPrioritiesRead
-                ? "✓ You have reviewed our investment priorities"
-                : "⚠️ Please open and read our investment priorities before submitting"}
+                ? "✓ You have reviewed our priorities"
+                : "⚠️ Please open and read our priorities before submitting"}
             </Typography>
             <ContactForm
               prioritiesRead={hasPrioritiesRead}
