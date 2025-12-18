@@ -13,7 +13,6 @@ const data = [
   {
     title: "Longevity",
     icon: img1,
-    href: "/priorities",
   },
   {
     title: "Artificial Intelligence",
