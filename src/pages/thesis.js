@@ -24,7 +24,7 @@ const PrioritySection = ({ title, color, items }) => (
             sx={{
               fontWeight: 700,
               fontSize: {
-                xs: "17px",
+                xs: "18px",
                 sm: "19px",
               },
               mb: 1,
@@ -36,8 +36,8 @@ const PrioritySection = ({ title, color, items }) => (
             <Typography
               sx={{
                 fontSize: {
-                  xs: "15px",
-                  sm: "17px",
+                  xs: "16px",
+                  sm: "18px",
                 },
                 opacity: 0.85,
                 lineHeight: 1.6,
@@ -117,29 +117,29 @@ const lowerPriorityItems = [
   },
 ];
 
-export default function PrioritiesPage() {
+export default function ThesisPage() {
   return (
     <>
       <Head>
-        <title>Priorities - Versetti Family Office</title>
+        <title>Thesis - Versetti Family Office</title>
         <meta
           name="description"
-          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment priorities in longevity research."
+          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment thesis in longevity research."
         />
         <meta name="keywords" content="longevity, startups, investment, biotech, aging research, family office" />
-        <meta property="og:title" content="Priorities - Versetti Family Office" />
+        <meta property="og:title" content="Thesis - Versetti Family Office" />
         <meta
           property="og:description"
-          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment priorities in longevity research."
+          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment thesis in longevity research."
         />
         <meta property="og:image" content="https://versetti.co/og.jpg" />
-        <meta property="og:url" content="https://versetti.co/priorities" />
+        <meta property="og:url" content="https://versetti.co/thesis" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Priorities - Versetti Family Office" />
+        <meta name="twitter:title" content="Thesis - Versetti Family Office" />
         <meta
           name="twitter:description"
-          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment priorities in longevity research."
+          content="We are looking for early-stage longevity start-ups and potential IP spin-outs. Learn about our investment thesis in longevity research."
         />
         <meta name="twitter:image" content="https://versetti.co/og.jpg" />
       </Head>
@@ -175,13 +175,13 @@ export default function PrioritiesPage() {
                   mb: 2,
                 }}
               >
-                Priorities
+                Thesis
               </Typography>
 
               <Typography
                 sx={{
                   fontSize: {
-                    xs: "17px",
+                    xs: "18px",
                     sm: "20px",
                   },
                   lineHeight: 1.7,
@@ -235,8 +235,8 @@ export default function PrioritiesPage() {
                 <Typography
                   sx={{
                     fontSize: {
-                      xs: "15px",
-                      sm: "17px",
+                      xs: "16px",
+                      sm: "18px",
                     },
                     opacity: 0.85,
                     lineHeight: 1.6,

@@ -27,7 +27,7 @@ const PrioritySection = ({ title, color, items, compact }) => (
           {item.description && (
             <Typography
               sx={{
-                fontSize: compact ? "16px" : { xs: "15px", sm: "17px" },
+                fontSize: compact ? "16px" : { xs: "16px", sm: "18px" },
                 opacity: 0.85,
                 lineHeight: 1.6,
               }}
@@ -111,7 +111,7 @@ export const PrioritiesContent = ({ compact = true }) => {
     <Box>
       <Typography
         sx={{
-          fontSize: compact ? "16px" : { xs: "17px", sm: "20px" },
+          fontSize: compact ? "16px" : { xs: "18px", sm: "20px" },
           lineHeight: 1.7,
           textAlign: "justify",
           mb: compact ? 2 : 4,
@@ -162,7 +162,7 @@ export const PrioritiesContent = ({ compact = true }) => {
         </Typography>
         <Typography
           sx={{
-            fontSize: compact ? "16px" : { xs: "15px", sm: "17px" },
+            fontSize: compact ? "16px" : { xs: "16px", sm: "18px" },
             opacity: 0.85,
             lineHeight: 1.6,
           }}

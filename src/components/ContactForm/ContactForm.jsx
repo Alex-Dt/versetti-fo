@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { CONFIG } from "../../constants/config";
 import ReCAPTCHA from "react-google-recaptcha";
 
-export const ContactForm = ({ type, vacancy, prioritiesRead = true, onPrioritiesWarning }) => {
+export const ContactForm = ({ type, vacancy }) => {
   const [isSending, setSendFlag] = useState(false);
   const [isSuccess, setSuccess] = useState(null);
   const [formData, setFormData] = useState({
@@ -50,11 +50,6 @@ export const ContactForm = ({ type, vacancy, prioritiesRead = true, onPriorities
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (!prioritiesRead && onPrioritiesWarning) {
-      onPrioritiesWarning();
-      return;
-    }
     
     setSendFlag(true);
     setSuccess(null);

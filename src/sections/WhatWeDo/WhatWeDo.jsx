@@ -146,7 +146,7 @@ export const WhatWeDo = () => {
           >
             <Button
               component={Link}
-              href="/priorities"
+              href="/thesis"
               variant="outlined"
               size="large"
               sx={{
@@ -156,7 +156,7 @@ export const WhatWeDo = () => {
                 px: 4,
                 py: 1.5,
                 fontWeight: 600,
-                fontSize: "16px",
+                fontSize: "18px",
                 textTransform: "none",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 "&:hover": {
@@ -166,7 +166,7 @@ export const WhatWeDo = () => {
                 },
               }}
             >
-              View Priorities
+              View Thesis
             </Button>
           </Stack>
         </Stack>
