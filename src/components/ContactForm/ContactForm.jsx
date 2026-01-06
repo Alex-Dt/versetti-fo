@@ -90,54 +90,60 @@ export const ContactForm = ({ type, vacancy }) => {
       return;
     }
 
+    const submissionData = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message.slice(0, 1000),
+      ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
+    };
+
     try {
-      // Use the AWS API Gateway endpoint
-      const apiEndpoint = CONFIG.API_ENDPOINT;
+      // Google Sheets integration (primary - always runs)
+      let sheetsSuccess = false;
+      if (CONFIG.GOOGLE_EXCEL_KEY) {
+        try {
+          const sheetsResponse = await fetch(
+            `https://script.google.com/macros/s/${CONFIG.GOOGLE_EXCEL_KEY}/exec`,
+            {
+              method: "POST",
+              body: JSON.stringify(submissionData),
+            }
+          );
+          const sheetsResult = await sheetsResponse.json();
+          sheetsSuccess = sheetsResult.success;
+          console.log("Google Sheets response:", sheetsResult);
+        } catch (sheetsError) {
+          console.error("Google Sheets error:", sheetsError);
+        }
+      }
 
-      // Debug logging
-      console.log("API Endpoint:", apiEndpoint);
-      console.log("Form data being sent:", {
-        name: formData.name,
-        email: formData.email,
-        message: formData.message.slice(0, 1000),
-        ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
-      });
+      // AWS SES integration (secondary - runs in parallel, doesn't block success)
+      if (CONFIG.API_ENDPOINT) {
+        fetch(`${CONFIG.API_ENDPOINT}/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submissionData),
+        })
+          .then((res) => res.json())
+          .then((result) => console.log("SES response:", result))
+          .catch((err) => console.error("SES error:", err));
+      }
 
-      const requestBody = JSON.stringify({
-        name: formData.name,
-        email: formData.email,
-        message: formData.message.slice(0, 1000),
-        ...(vacancy && { vacancy, resumeLink: formData.resumeLink }),
-      });
-
-      console.log("Request body:", requestBody);
-      console.log("Request body length:", requestBody.length);
-
-      const response = await fetch(`${apiEndpoint}/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: requestBody,
-      });
-
-      const result = await response.json();
-
-      // Debug logging
-      console.log("Response status:", response.status);
-      console.log("Response ok:", response.ok);
-      console.log("Response result:", result);
-      console.log("Result success:", result.success);
-
-      if (response.ok && response.status === 200) {
+      // Success is determined by Google Sheets (primary)
+      if (sheetsSuccess) {
         setSuccess("Thank you! Your message was sent!");
-        setFormData({ name: "", email: "", message: "", error: { formError: null } });
+        setFormData({ name: "", email: "", message: "", resumeLink: "", error: { formError: null } });
         if (recaptchaRef.current) recaptchaRef.current.reset();
-      } else {
-        console.log("Error condition triggered");
-
+      } else if (!CONFIG.GOOGLE_EXCEL_KEY) {
+        // Fallback: if no Google Sheets key, show error
         setFormData((prev) => {
-          return { ...formData, error: { ...prev.error, formError: result.error || "Something went wrong! Please try again." } };
+          return { ...formData, error: { ...prev.error, formError: "Form submission is not configured. Please contact us directly." } };
+        });
+      } else {
+        setFormData((prev) => {
+          return { ...formData, error: { ...prev.error, formError: "Something went wrong! Please try again." } };
         });
       }
 
@@ -146,7 +152,7 @@ export const ContactForm = ({ type, vacancy }) => {
       console.error("Contact form error:", error);
       setFormData({
         ...formData,
-        error: "Failed to send message. Please try again later.",
+        error: { formError: "Failed to send message. Please try again later." },
       });
       setSendFlag(false);
     }
