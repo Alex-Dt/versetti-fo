@@ -117,19 +117,17 @@ export const ContactForm = ({ type, vacancy }) => {
         }
       }
 
-      // AWS SES integration (secondary - runs in parallel, doesn't block success)
-      if (CONFIG.API_ENDPOINT) {
-        fetch(`${CONFIG.API_ENDPOINT}/contact`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(submissionData),
-        })
-          .then((res) => res.json())
-          .then((result) => console.log("SES response:", result))
-          .catch((err) => console.error("SES error:", err));
-      }
+      // Netlify Function email integration (secondary - runs in parallel)
+      fetch(`/.netlify/functions/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+      })
+        .then((res) => res.json())
+        .then((result) => console.log("Email response:", result))
+        .catch((err) => console.error("Email error:", err));
 
       // Success is determined by Google Sheets (primary)
       if (sheetsSuccess) {
