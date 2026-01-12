@@ -35,7 +35,7 @@ exports.handler = async (event) => {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
-    const adminEmail = process.env.ADMIN_EMAIL || 'contact@versetti.co';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@versetti.co';
 
     // Build email content
     let emailContent = `
@@ -48,7 +48,7 @@ exports.handler = async (event) => {
       <p>${message.replace(/\n/g, '<br>')}</p>
     `;
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Versetti Contact <onboarding@resend.dev>';
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Versetti Contact <noreply@noreply.versetti.co>';
     
     const { data, error } = await resend.emails.send({
       from: fromEmail,
