@@ -48,8 +48,10 @@ exports.handler = async (event) => {
       <p>${message.replace(/\n/g, '<br>')}</p>
     `;
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'Versetti Contact <onboarding@resend.dev>';
+    
     const { data, error } = await resend.emails.send({
-      from: 'Versetti Contact <noreply@versetti.co>',
+      from: fromEmail,
       to: [adminEmail],
       replyTo: email,
       subject: vacancy 
