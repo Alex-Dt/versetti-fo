@@ -27,6 +27,11 @@ export const Menu = [
     id: "contact",
   },
   {
+    title: "Thesis",
+    href: "/thesis",
+    id: "thesis",
+  },
+  {
     title: `Jobs (${jobsData?.length ?? 0})`,
     href: "/jobs",
     id: "jobs",
